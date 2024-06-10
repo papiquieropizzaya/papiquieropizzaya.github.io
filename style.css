@@ -1,4 +1,7 @@
-body{
-    background-color: #ff8888;
-    
+body {
+  background-image: url('fondo.jpeg'); /* Reemplaza con la ruta real de tu imagen */
+  background-repeat: repeat; /* Controla si la imagen se repite (opcional) */
+  background-size: cover; /* Controla el tamaño de la imagen (opcional) */
+  background-position: center; /* Controla la posición de la imagen (opcional) */
+    background-attachment: fixed
 }
