@@ -1,7 +1,46 @@
 body {
-  background-image: url('fondo.jpeg'); /* Reemplaza con la ruta real de tu imagen */
-  background-repeat: repeat; /* Controla si la imagen se repite (opcional) */
-  background-size: cover; /* Controla el tamaño de la imagen (opcional) */
-  background-position: center; /* Controla la posición de la imagen (opcional) */
-    background-attachment: fixed
+    background-image: url('fondo.jpeg'); /* Reemplaza con la ruta real de tu imagen */
+    background-repeat: repeat; /* Controla si la imagen se repite (opcional) */
+    background-size: cover; /* Controla el tamaño de la imagen (opcional) */
+    background-position: center; /* Controla la posición de la imagen (opcional) */
+      background-attachment: fixed
+  }
+
+body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px solid #ffffffd5;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.header {
+    text-align: center;
+    padding: 50px solid #ff1616;
+    font-family: 'Arial', Times, serif, sans-serif;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.info {
+    border: #851bff;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.menu-item {
+    border: 6px solid #ff1616;
+    margin: 20px; 
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+h2 {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
