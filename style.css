@@ -44,3 +44,9 @@ h2 {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
+
+.im { 
+    width: 100%;
+    height: auto;
+
+}
