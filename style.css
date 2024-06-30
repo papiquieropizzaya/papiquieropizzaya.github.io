@@ -50,3 +50,14 @@ h2 {
     height: auto;
 
 }
+
+.map { 
+    width: 70%;
+    height: 700px;
+}
+
+.vid {
+    width: 50%;
+    height: auto;
+    border-style: ridge;
+}
