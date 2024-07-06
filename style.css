@@ -40,6 +40,20 @@ body {
     color: white;
 }
 
+.menu-item h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.menu-item h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.menu-item p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 h2 {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -59,6 +73,12 @@ h2 {
 .vid {
     width: 100%;
     border-style: ridge;
+    border-radius: 10px;
 }
 
+a {
+    color: aqua;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
 
