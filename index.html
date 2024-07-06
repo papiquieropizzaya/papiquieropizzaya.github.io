@@ -3,14 +3,35 @@
 <head>
     <title>Papi Quiero Pizza Ya</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hola, Pizzas En Leña Con Borde Relleno De Queso, Son Unicas, Son Diferentes" />
     <meta name="robots" content="index,follow" />
     <meta name="author" content="Abel Nicolás Jaimes Orjuela" />
     <meta name="keywrods" content="papiquieropizzaya, Papi Quiero Pizza Ya, Papi quiero pizza ya, papi quiero pizza, Papi quiero pizza, Papi Quiero Pizza, Chinácota, chinácota, Chinacota, chinacota, Pizza Chinácota, Pizza chinácota, Pizza Chinacota, Pizza chinacota, pizza Chinácota, pizza chinácota, pizza Chinacota, pizza chinacota" />
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="Icon.png">
-    
+    <style>
+        .carousel {
+            max-width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        .carousel ul li {
+            flex: 0 0 auto;
+            width: 100%; /* Asegura que cada imagen ocupe el 100% del ancho */
+        }
+        .carousel img {
+            width: 100%;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,16 +42,32 @@
         <h2>Pizza a Leña + Borde De Queso Únicas, Chinácota.</h2>
     </div>
 
-    <div class="slider-frame">
+      <!-- Carrusel de Imágenes -->
+      <div class="carousel">
         <ul>
-
-            <li><img src="./Carrusel/6.jpg" alt=""></li>
-            <li><img src="./Carrusel/5.jpg" alt=""></li>
-            <li><img src="./Carrusel/3.jpg" alt=""></li>
-            <li><img src="./Carrusel/0.jpg" alt=""></li>
-
+            <li><img src="./Carrusel/6.jpg" alt="Imagen 1"></li>
+            <li><img src="./Carrusel/5.jpg" alt="Imagen 2"></li>
+            <li><img src="./Carrusel/3.jpg" alt="Imagen 3"></li>
+            <li><img src="./Carrusel/0.jpg" alt="Imagen 4"></li>
         </ul>
     </div>
+    
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel ul li');
+        const totalSlides = slides.length;
+    
+        function moveSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            const translateValue = -currentIndex * 100 + '%';
+            document.querySelector('.carousel ul').style.transform = `translateX(${translateValue})`;
+        }
+    
+        setInterval(moveSlide, 7000); // Cambia de imagen cada 7 segundos
+    </script>
+    
+    
+    
 
     <div class="footer">
         <h2>Dirección: </h2>
