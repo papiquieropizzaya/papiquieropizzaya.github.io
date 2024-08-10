@@ -99,3 +99,27 @@ a {
     font-style: normal;
   }
   
+
+
+
+.button {
+
+            
+    background-color: #4CAF50; /* Verde */
+    border: none;
+    color: white;
+    padding: 55px a;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 55px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    min-width: 100;
+
+}
+
+.button-container {
+    text-align: center;
+    }
