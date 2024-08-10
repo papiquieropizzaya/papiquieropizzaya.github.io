@@ -1,13 +1,17 @@
 body {
+    
     background-image: url('fondo.jpeg'); /* Reemplaza con la ruta real de tu imagen */
     background-repeat: repeat; /* Controla si la imagen se repite (opcional) */
     background-size: cover; /* Controla el tamaño de la imagen (opcional) */
     background-position: center; /* Controla la posición de la imagen (opcional) */
       background-attachment: fixed
+    
   }
 
 body {
-    font-family: 'Times New Roman', Times, serif, sans-serif;
+    font-family: "Special Elite", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .footer {
@@ -41,7 +45,9 @@ body {
 }
 
 .menu-item h2 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Special Elite", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 
@@ -82,3 +88,14 @@ a {
     text-decoration: none;
 }
 
+
+
+
+
+
+.special-elite-regular {
+    font-family: "Special Elite", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
