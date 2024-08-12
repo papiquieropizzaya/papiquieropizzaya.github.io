@@ -90,6 +90,26 @@ a {
 
 
 
+.carousel {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.carousel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+.carousel ul li {
+    flex: 0 0 auto;
+    width: 100%; /* Asegura que cada imagen ocupe el 100% del ancho */
+}
+.carousel img {
+    width: 100%;
+    display: block;
+}
 
 
 
