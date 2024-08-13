@@ -1,3 +1,46 @@
+/* Oculta el contenido hasta que se complete la carga */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    z-index: 9999;
+}
+
+#loader img {
+    width: 200px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 200px;
+    animation: spin 4s ease-in-out forwards;
+}
+
+/* Animación de giro */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(720deg); } /* Primera vuelta rápida (2 segundos) */
+    100% { transform: rotate(1080deg); } /* Segunda vuelta más lenta (2 segundos) */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
     
     background-image: url('fondo.jpeg'); /* Reemplaza con la ruta real de tu imagen */
@@ -24,7 +67,6 @@ body {
 .header {
     text-align: center;
     padding: 50px solid #ff1616;
-    font-family: 'Arial', Times, serif, sans-serif;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
