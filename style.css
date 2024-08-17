@@ -168,3 +168,34 @@ a {
     width: 260px;
     border-radius: 16px;
 }
+
+@media (min-width: 800px) {
+    .carousel {
+        max-width: 60%;
+        overflow: hidden;
+        position: relative;
+        border-radius: 14px;
+    }
+
+    .vid {
+        width: 60%;
+        border-style: ridge;
+        border-radius: 10px;
+        align-tracks: center;
+    }
+
+    .im { 
+        width: 40%;
+        height: auto;
+    }
+
+    .container-pizzas {
+        display: flex;
+    }
+
+    .img-pizzas-mostrario {
+        width: 260px;
+        border-radius: 16px;
+    }
+    
+}
