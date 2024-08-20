@@ -32,10 +32,39 @@
 
 
     <div id="content" style="display: none;">
+
+
+        <nav id="navbar" class="navbar">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://papiquieropizzaya.github.io/Icon.png" alt="Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>                
+                <li><a href="#menu">Menú link 1</a></li>
+                <li><a href="https://papiquieropizzaya.github.io/menu/" target="_parent">Menú link 2</a></li>
+                <li><a href="#inf">Info de cada pizza</a></li>                
+                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#about">Acerca de</a></li>
+
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    
+
+
         <div>
-        <div class="header" id="comi">
+        <div class="header" id="home">
+            <h1> </h1>
+            <h1> </h1>
+            <h1>¡Hola!</h1>
+            <img src="https://papiquieropizzaya.github.io/228684334_196620675762107_5345788395213720390_n.jpg" width="250">
             <h1>¡Bienvenidos a Papi Quiero Pizza Ya!</h1>
-        <img src="https://papiquieropizzaya.github.io/228684334_196620675762107_5345788395213720390_n.jpg" width="300">
             <h2>Pizza a Leña + Borde De Queso Únicas, Chinácota.</h2>
         </div>
 
@@ -58,6 +87,11 @@
                 <li><img src="https://papiquieropizzaya.github.io/Carrusel/6.jpg" alt="Imagen 1"></li>
 
                 <li><img src="https://papiquieropizzaya.github.io/Carrusel/8.jpg" alt="Imagen 1"></li>
+
+                <li><img src="Carrusel/11.jpg" alt=""></li>
+
+                <li><img src="Carrusel/12.jpg" alt=""></li>
+
             </ul>
         </div>
         
@@ -78,7 +112,7 @@
         
         
 
-        <div class="footer">
+        <div class="footer" id="contact">
             <h2>Dirección: </h2>
             <h3><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.6773412726964!2d-72.60039247417065!3d7.6065724791568785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6631463a0b0c07%3A0x27776117f6c64119!2sPapi%20quiero%20pizza%20ya!5e0!3m2!1ses-419!2sco!4v1696085969190!5m2!1ses-419!2sco" width="100%" height="450px" style="border:7px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></h3>
             <h1>Para llegar con Waze haz clic <a href="https://www.waze.com/es-419/live-map/directions/co/norte-de-santander/chinacota/papi-quiero-pizza-ya?to=place.ChIJBwwLOkYxZo4RGUHG9hdhdyc">aquí</a>.</h1>
@@ -100,7 +134,7 @@
         <div style="background-color: rgba(0, 0, 0, 0.5); color: white;">
             <h1>Nuestro Menú</h1>
             <h2>Aquí puedes encontrar las deliciosas pizzas que ofrecemos:</h2>
-            <a href="https://papiquieropizzaya.github.io/menu/" target="_parent"><img src="menu.jpeg" style="cursor: zoom-in;" alt="Menú Pizzas" class="im"> </img></a>
+            <a href="https://papiquieropizzaya.github.io/menu/" target="_parent"><img src="menu.jpeg" style="cursor: zoom-in;" alt="Menú Pizzas" class="im" id="menu"> </img></a>
             
             <h2>O lo puedes ver haciendo clic <a href="https://papiquieropizzaya.github.io/menu/" target="_parent">aquí</a> como tambien <a href="https://papiquieropizzaya.github.io/menu.jpeg" target="_parent">aquí</a>.</h2>
         </div>
@@ -109,7 +143,7 @@
 
 
         </div>
-        <h2><a href="#comi">Ir Al Inicio E Información De Contacto</a>.......<a href="#inf">Ir A Información Detallada De Cada Tamaño</a>.......<a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
 
         <div class="menu-item" id="inf">
             <h2>Pequeña:</h2>
@@ -119,17 +153,17 @@
             <h2>Grande:</h2>
             <p>12 Porciones = 43cm + Borde De Queso</p>
         </div>
-        <h2><a href="#comi">Ir Al Inicio E Información De Contacto</a>.......<a href="#inf">Ir A Información Detallada De Cada Tamaño</a>.......<a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
         <div class="menu-item" id="nor">
             <div class="container-pizzas"> 
+
                 <div>
                     <h2>Margarita</h2>
                     <p>Una clásica pizza con tomate, mozzarella y albahaca.</p>
                     <h3>Pequeña = $23.000cop</h3>
                     <h3>Mediana = $30.000cop</h3>
                     <h3>Grande = $36.000cop</h3></div>
-                <div><img src="https://papiquieropizzaya.github.io/img-pizzas-mostrario/margarita.jpeg" alt="Margarita" class="img-pizzas-mostrario"></div>          
-                
+                <div><img src="https://papiquieropizzaya.github.io/img-pizzas-mostrario/margarita.jpeg" alt="Margarita" class="img-pizzas-mostrario"></div>
                 
             </div>
 
@@ -233,7 +267,7 @@
 
         </div>
         
-        <h2><a href="#comi">Ir Al Inicio E Información De Contacto</a>.......<a href="#inf">Ir A Información Detallada De Cada Tamaño</a>.......<a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
         <div class="menu-item" id="zx">
             <h1>Listas De Pizzas Especiales</h1>
             <h2>Marinera</h2>
@@ -298,7 +332,7 @@
             <h3>Mediana = $42.000cop</h3>
             <h3>Grande = $52.000cop</h3>  
         </div>
-        <h2><a href="#comi">Ir Al Inicio E Información De Contacto</a>.......<a href="#inf">Ir A Información Detallada De Cada Tamaño</a>.......<a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
         <div class="menu-item" id="sin">
             <h1>Listas De Pizzas Sin Queso</h1>
             <h2>Vegana</h2>
@@ -313,13 +347,13 @@
             <h3>Mediana = $39.000cop</h3>
             <h3>Grande = $49.000cop</h3>
         </div>
-        <h2><a href="#comi">Ir Al Inicio E Información De Contacto</a>.......<a href="#inf">Ir A Información Detallada De Cada Tamaño</a>.......<a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
         <!-- Agrega más elementos de menú aquí -->
 
 
 
 
-        <footer class="footer">
+        <footer class="footer" id="about">
             <p>Trabajamos para mejorar esta pagina web</p>
             <p>© 2024 Papi Quiero Pizza Ya. Todos los derechos reservados.</p>
             <p>Create By <a target="_blank" href="https://www.facebook.com/abelnicolas.jaimesorjuela.7">Abel Nicolás J.O.</a></p>
