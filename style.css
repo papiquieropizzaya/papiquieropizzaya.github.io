@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #F9E0AE;
     z-index: 9999;
     transition: transform 1s ease-in-out; /* Transición suave hacia arriba */
 }
@@ -342,3 +342,15 @@ body {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
