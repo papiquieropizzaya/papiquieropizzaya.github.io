@@ -112,6 +112,14 @@ a {
     color: aqua;
     background-color: rgba(0, 0, 0, 0.5);
     text-decoration: none;
+
+}
+
+a:hover {
+    color: crimson;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    font-size: 27px;
 }
 
 .carousel {
@@ -159,6 +167,12 @@ a {
     border-radius: 4px;
     min-width: 100;
 
+}
+
+#big-button:hover {
+    color: crimson;
+    font-size: 55px;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .button-container {
@@ -270,7 +284,7 @@ a {
 }
 
 .nav-links a {
-    color: white;
+    color: rgb(216, 52, 52);
     text-decoration: none;
     font-size: 18px;
 }
