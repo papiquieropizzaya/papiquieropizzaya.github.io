@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>Haz tu pedido en linea</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedido de Pizzas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hola, Pizzas En Leña Con Borde Relleno De Queso, Son Unicas, Son Diferentes" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Abel Nicolás Jaimes Orjuela" />
+    <meta name="keywrods" content="papiquieropizzaya, Papi Quiero Pizza Ya, Papi quiero pizza ya, papi quiero pizza, Papi quiero pizza, Papi Quiero Pizza, Chinácota, chinácota, Chinacota, chinacota, Pizza Chinácota, Pizza chinácota, Pizza Chinacota, Pizza chinacota, pizza Chinácota, pizza chinácota, pizza Chinacota, pizza chinacota" />
+    <link rel="icon" href="https://papiquieropizzaya.github.io/Icon.png">
+    <meta name="google-site-verification" content="WfiA4hGyjafIAhHt9pbjUjHsb3ArnhuDPosnt4M6rSk" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +22,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f9f9f9;
+            background-color: #fff2d7;
         }
         .container {
             background-color: #fff;
@@ -50,52 +59,148 @@
         button:hover {
             background-color: #218838;
         }
+        /* Oculta el contenido hasta que se complete la carga */
+        #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #F9E0AE;
+            z-index: 9999;
+            transition: transform 1s ease-in-out; /* Transición suave hacia arriba */
+        }
+
+        #loader img {
+            width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+            height: 100px;
+            animation: spin infinite 1s linear;
+        }
+
+        /* Texto de advertencia de conexión */
+        #connection-warning {
+            margin-top: 20px;
+            font-size: 18px;
+            color: red;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Animación de giro infinito */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+    
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h3>Pedido de Pizzas</h3>
-    
-    <label for="numSabores">¿Cuántos sabores deseas?</label>
-    <select id="numSabores">
-        <option value="">Selecciona una opción</option>
-        <option value="1">1 sabor</option>
-        <option value="2">2 sabores</option>
-        <option value="3">3 sabores</option>
-        <option value="4">4 sabores</option>
-    </select>
-    
-    <div id="saboresContainer"></div>
-
-    <label for="domicilio">¿Deseas domicilio?</label>
-    <select id="domicilio">
-        <option value="no">No</option>
-        <option value="si">Sí</option>
-    </select>
-
-    <div id="direccionContainer" style="display: none;">
-        <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" placeholder="Ingresa la dirección">
+    <div id="loader-wrapper">
+        <div id="loader">
+            <img src="https://papiquieropizzaya.github.io/pizza.png" alt="Cargando...">
+        </div>
+        <p id="connection-warning" style="display: none;">Verifica tu conexión a internet.</p>
     </div>
 
-    <label for="extra">¿Qué más deseas?</label>
-    <textarea id="extra" placeholder="Escribe algo extra..."></textarea>
+    <div id="content" style="display: none;">
 
-    <label for="fecha">¿Para cuándo lo deseas?</label>
-    <input type="datetime-local" id="fecha">
+        <div class="container">
+            <h3>Pedido de Pizza</h3>
 
-    <button id="whatsappBtn">Enviar pedido por WhatsApp</button>
-</div>
+            <label for="tamano">¿Qué tamaño de pizza deseas?</label>
+            <select id="tamano">
+                <option value="">Selecciona un tamaño</option>
+                <option value="pequena">Pequeña</option>
+                <option value="mediana">Mediana</option>
+                <option value="grande">Grande</option>
+            </select>
+            
+            <label for="numSabores">¿Cuántos sabores deseas?</label>
+            <select id="numSabores">
+                <option value="">Selecciona una opción</option>
+                <option value="1">1 sabor</option>
+                <option value="2">2 sabores</option>
+                <option value="3">3 sabores</option>
+                <option value="4">4 sabores</option>
+            </select>
+            
+            <div id="saboresContainer"></div>
 
+            <label for="domicilio">¿Deseas domicilio?</label>
+            <select id="domicilio">
+                <option value="no">No</option>
+                <option value="si">Sí</option>
+            </select>
+
+            <div id="direccionContainer" style="display: none;">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" placeholder="Ingresa la dirección">
+            </div>
+
+            <label for="extra">¿Qué más deseas?</label>
+            <textarea id="extra" placeholder="Escribe algo extra..."></textarea>
+
+            <label for="fecha">¿Para cuándo lo deseas?</label>
+            <input type="datetime-local" id="fecha">
+
+            <button id="whatsappBtn">Enviar pedido por WhatsApp</button>
+        </div>
+    </div>
 <script>
+    window.addEventListener("load", function() {
+    const loader = document.getElementById("loader");
+    const wrapper = document.getElementById("loader-wrapper");
+    const warning = document.getElementById("connection-warning");
+
+    // Mostrar advertencia después de 4 segundos si la página sigue cargando
+    const warningTimeout = setTimeout(function() {
+        warning.style.display = "block";
+    }, 4000);
+
+    loader.addEventListener("animationiteration", function() {
+        // Una vez que se complete la vuelta actual, realiza la transición hacia arriba
+        wrapper.style.transform = "translateY(-100%)"; // Mueve el fondo hacia arriba
+        document.getElementById("content").style.display = "block"; // Muestra el contenido
+        
+        // Cancela el mensaje de advertencia si ya cargó
+        clearTimeout(warningTimeout);
+
+        // Espera 1 segundo para que la transición termine antes de ocultar el wrapper
+        setTimeout(function() {
+            wrapper.style.display = "none";
+        }, 1000);
+    });
+
+    // Desactiva la animación infinita cuando la página está completamente cargada
+    loader.style.animationIterationCount = "1";
+});
+
+
+
+    
+
+
+
+
+
     const saboresContainer = document.getElementById('saboresContainer');
     const numSabores = document.getElementById('numSabores');
     const domicilio = document.getElementById('domicilio');
     const direccionContainer = document.getElementById('direccionContainer');
     const whatsappBtn = document.getElementById('whatsappBtn');
+    const tamano = document.getElementById('tamano');
 
     const pizzas = ['Pepperoni', 'Hawaiana', 'Mexicana', 'Vegetariana', '4 Quesos'];
+
+    tamano.addEventListener('change', function() {
+        // Aquí puedes agregar lógica específica para los tamaños si es necesario
+    });
 
     numSabores.addEventListener('change', function() {
         saboresContainer.innerHTML = '';
@@ -139,12 +244,13 @@
             if (select.value) sabores.push(select.value);
         });
 
+        const tamaño = tamano.value;
         const domicilioSeleccionado = domicilio.value;
         const direccion = document.getElementById('direccion').value;
         const extra = document.getElementById('extra').value;
         const fecha = document.getElementById('fecha').value;
 
-        let mensaje = `Hola, Necesito una pizza de ${sabores.length} sabor(es): ${sabores.join(', ')}.`;
+        let mensaje = `Hola, Necesito una pizza ${tamaño} con ${sabores.length} sabor(es): ${sabores.join(', ')}.`;
 
         if (domicilioSeleccionado === 'si') {
             mensaje += ` La necesito con domicilio en: ${direccion}.`;
@@ -163,6 +269,7 @@
         window.open(`https://wa.me/573123747146?text=${encodeURIComponent(mensaje)}`, '_blank');
     });
 </script>
+
 
 </body>
 </html>
