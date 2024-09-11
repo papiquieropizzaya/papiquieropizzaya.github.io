@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Pizzas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box; /* Incluye el padding en el ancho del contenedor */
+        }
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+            box-sizing: border-box; /* Asegura que todo se mantenga dentro de los bordes */
+        }
+        select, input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box; /* Asegura que el padding no exceda los bordes */
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Pedido de Pizzas</h3>
+    
+    <label for="numSabores">¿Cuántos sabores deseas?</label>
+    <select id="numSabores">
+        <option value="">Selecciona una opción</option>
+        <option value="1">1 sabor</option>
+        <option value="2">2 sabores</option>
+        <option value="3">3 sabores</option>
+        <option value="4">4 sabores</option>
+    </select>
+    
+    <div id="saboresContainer"></div>
+
+    <label for="domicilio">¿Deseas domicilio?</label>
+    <select id="domicilio">
+        <option value="no">No</option>
+        <option value="si">Sí</option>
+    </select>
+
+    <div id="direccionContainer" style="display: none;">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" placeholder="Ingresa la dirección">
+    </div>
+
+    <label for="extra">¿Qué más deseas?</label>
+    <textarea id="extra" placeholder="Escribe algo extra..."></textarea>
+
+    <label for="fecha">¿Para cuándo lo deseas?</label>
+    <input type="datetime-local" id="fecha">
+
+    <button id="whatsappBtn">Enviar pedido por WhatsApp</button>
+</div>
+
+<script>
+    const saboresContainer = document.getElementById('saboresContainer');
+    const numSabores = document.getElementById('numSabores');
+    const domicilio = document.getElementById('domicilio');
+    const direccionContainer = document.getElementById('direccionContainer');
+    const whatsappBtn = document.getElementById('whatsappBtn');
+
+    const pizzas = ['Pepperoni', 'Hawaiana', 'Mexicana', 'Vegetariana', '4 Quesos'];
+
+    numSabores.addEventListener('change', function() {
+        saboresContainer.innerHTML = '';
+        const cantidad = parseInt(this.value);
+
+        for (let i = 0; i < cantidad; i++) {
+            const label = document.createElement('label');
+            label.textContent = `¿Qué sabor de pizza deseas?`;
+
+            const select = document.createElement('select');
+            select.className = 'pizzaSelect';
+            
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = 'Selecciona un sabor';
+            select.appendChild(defaultOption);
+
+            pizzas.forEach(pizza => {
+                const option = document.createElement('option');
+                option.value = pizza;
+                option.textContent = pizza;
+                select.appendChild(option);
+            });
+
+            saboresContainer.appendChild(label);
+            saboresContainer.appendChild(select);
+        }
+    });
+
+    domicilio.addEventListener('change', function() {
+        if (this.value === 'si') {
+            direccionContainer.style.display = 'block';
+        } else {
+            direccionContainer.style.display = 'none';
+        }
+    });
+
+    whatsappBtn.addEventListener('click', function() {
+        let sabores = [];
+        document.querySelectorAll('.pizzaSelect').forEach(select => {
+            if (select.value) sabores.push(select.value);
+        });
+
+        const domicilioSeleccionado = domicilio.value;
+        const direccion = document.getElementById('direccion').value;
+        const extra = document.getElementById('extra').value;
+        const fecha = document.getElementById('fecha').value;
+
+        let mensaje = `Hola, Necesito una pizza de ${sabores.length} sabor(es): ${sabores.join(', ')}.`;
+
+        if (domicilioSeleccionado === 'si') {
+            mensaje += ` La necesito con domicilio en: ${direccion}.`;
+        } else if (direccion) {
+            mensaje += ` La necesito en la dirección: ${direccion}.`;
+        }
+
+        if (extra) {
+            mensaje += ` Además, quiero: ${extra}.`;
+        }
+
+        if (fecha) {
+            mensaje += ` Para la fecha y hora: ${fecha}.`;
+        }
+
+        window.open(`https://wa.me/573123747146?text=${encodeURIComponent(mensaje)}`, '_blank');
+    });
+</script>
+
+</body>
+</html>
