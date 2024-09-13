@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <div align="center">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9448273062479555"
@@ -63,14 +64,18 @@
         <div class="header" id="home">
             <h1> </h1>
             <h1> </h1>
-            <h1>¡Hola!</h1>
-            <img src="228684334_196620675762107_5345788395213720390_n.jpg" width="250">
+            
+            <img src="228684334_196620675762107_5345788395213720390_n.jpg" width="250" style="margin-top: 90px;">
             <h1>¡Bienvenidos a Papi Quiero Pizza Ya!</h1>
             <h2>Pizza a Leña + Borde De Queso Únicas, Chinácota.</h2>
         </div>
 
         <div class="button-container">
             <a href="https://papiquieropizzaya.github.io/lite" class="button" target="_parent" id="big-button">Ir A Versión Lite</a>
+        </div>
+
+        <div class="button-container">
+            <a href="https://papiquieropizzaya.github.io/pedido-en-linea/" class="button-pedido-en-linea" target="_parent" id="big-button">Haz Tu Pedido En Linea</a>
         </div>
 
         <!-- Carrusel de Imágenes -->
@@ -92,19 +97,6 @@
             </ul>
         </div>
         
-        <script>
-            let currentIndex = 0;
-            const slides = document.querySelectorAll('.carousel ul li');
-            const totalSlides = slides.length;
-        
-            function moveSlide() {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                const translateValue = -currentIndex * 100 + '%';
-                document.querySelector('.carousel ul').style.transform = `translateX(${translateValue})`;
-            }
-        
-            setInterval(moveSlide, 4500); // Cambia de imagen cada 4,5 segundos
-        </script>
         
         
 
@@ -112,9 +104,20 @@
 
         <div class="footer" id="contact">
             <h2>Dirección: </h2>
-            <h3><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.6773412726964!2d-72.60039247417065!3d7.6065724791568785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6631463a0b0c07%3A0x27776117f6c64119!2sPapi%20quiero%20pizza%20ya!5e0!3m2!1ses-419!2sco!4v1696085969190!5m2!1ses-419!2sco" width="100%" height="450px" style="border:7px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></h3>
-            <h1>Para llegar con Waze haz clic <a href="https://www.waze.com/es-419/live-map/directions/co/norte-de-santander/chinacota/papi-quiero-pizza-ya?to=place.ChIJBwwLOkYxZo4RGUHG9hdhdyc">aquí</a>.</h1>
+            <h3><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.6773412726964!2d-72.60039247417065!3d7.6065724791568785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6631463a0b0c07%3A0x27776117f6c64119!2sPapi%20quiero%20pizza%20ya!5e0!3m2!1ses-419!2sco!4v1696085969190!5m2!1ses-419!2sco" width="100%" height="450px" style="border:7px; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></h3>
+
+            <div style="display: inline-flex;">
+                
+                <h1>Para llegar con Waze haz clic <a href="https://www.waze.com/es-419/live-map/directions/co/norte-de-santander/chinacota/papi-quiero-pizza-ya?to=place.ChIJBwwLOkYxZo4RGUHG9hdhdyc" style="margin-top: 30px;">aquí</a>--</h1>
+                
+                <a href="https://www.waze.com/es-419/live-map/directions/co/norte-de-santander/chinacota/papi-quiero-pizza-ya?to=place.ChIJBwwLOkYxZo4RGUHG9hdhdyc">
+                    <img src="waze-icon.png" alt="" width="50px" href>
+                </a>
+            
+            </div>
+            
             <h2>Para pedidos o consultas, por favor llámanos al <a href="tel:+573123747146">+57 312 3747146</a> o escribenos al <a href="https://api.whatsapp.com/send/?phone=573123747146&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank">WhatsApp</a></h2>
+            <h2><a href="https://papiquieropizzaya.github.io/pedido-en-linea/" class="button-pedido-en-linea" target="_parent" id="big-button">Haz Tu Pedido En Linea</a></h2>
             <h2>Tambien nos puedes encontrar en <a target="_blank" href="https://www.google.com/maps/place/Papi+quiero+pizza+ya/@7.6070361,-72.6005971,19.5z/data=!4m6!3m5!1s0x8e6631463a0b0c07:0x27776117f6c64119!8m2!3d7.6069427!4d-72.6006405!16s%2Fg%2F11mr0rl6qx?entry=ttu">Google Maps</a></h2>
             
         </div>
@@ -141,7 +144,7 @@
 
 
         </div>
-        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Pizzas Normales</a>.......<a href="#zx">Pizzas Especiales</a>........<a href="#sin">Pizzas Sin Queso</a></h2>
 
         <div class="menu-item" id="inf">
             <h2>Pequeña:</h2>
@@ -151,7 +154,7 @@
             <h2>Grande:</h2>
             <p>12 Porciones = 43cm + Borde De Queso</p>
         </div>
-        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Pizzas Normales</a>.......<a href="#zx">Pizzas Especiales</a>........<a href="#sin">Pizzas Sin Queso</a></h2>
         <div class="menu-item" id="nor">
             <div class="container-pizzas"> 
 
@@ -265,7 +268,7 @@
 
         </div>
         
-        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Pizzas Normales</a>.......<a href="#zx">Pizzas Especiales</a>........<a href="#sin">Pizzas Sin Queso</a></h2>
         <div class="menu-item" id="zx">
             <h1>Listas De Pizzas Especiales</h1>
             <h2>Marinera</h2>
@@ -330,7 +333,7 @@
             <h3>Mediana = $42.000cop</h3>
             <h3>Grande = $52.000cop</h3>  
         </div>
-        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Pizzas Normales</a>.......<a href="#zx">Pizzas Especiales</a>........<a href="#sin">Pizzas Sin Queso</a></h2>
         <div class="menu-item" id="sin">
             <h1>Listas De Pizzas Sin Queso</h1>
             <h2>Vegana</h2>
@@ -345,7 +348,7 @@
             <h3>Mediana = $39.000cop</h3>
             <h3>Grande = $49.000cop</h3>
         </div>
-        <h2 class="links-ids-none-navbar"><a href="#nor">Ir A La Lista De Pizzas</a>.......<a href="#zx">Ir A La Lista De Pizzas Especiales</a>........<a href="#sin">Ir A Lista De Pizzas Sin Queso</a></h2>
+        <h2 class="links-ids-none-navbar"><a href="#nor">Pizzas Normales</a>.......<a href="#zx">Pizzas Especiales</a>........<a href="#sin">Pizzas Sin Queso</a></h2>
         <!-- Agrega más elementos de menú aquí -->
 
 
