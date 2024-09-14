@@ -80,9 +80,9 @@ body {
     color: white;
 }
 
-hr,
-.menu-item h2 {
+hr {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .menu-item h3 {
