@@ -120,14 +120,13 @@ a {
     color: aqua;
     background-color: rgba(0, 0, 0, 0.5);
     text-decoration: none;
-
+    transition: color 0.3s;
 }
 
 a:hover {
     color: crimson;
     background-color: rgba(0, 0, 0, 0.5);
     text-decoration: none;
-    font-size: 27px;
 }
 
 .carousel {
@@ -192,6 +191,8 @@ a:hover {
     min-width: 100;
 
 }
+
+
 
 #big-button:hover {
     color: crimson;
