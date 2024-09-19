@@ -111,7 +111,7 @@
 
     <label for="fecha">¿Para cuándo lo deseas?</label>
     <input type="datetime-local" id="fecha">
-    <label for="rapido">
+    <label for="rapido" >
         <input type="checkbox" id="rapido"> Lo más rápido posible
     </label>
 
@@ -133,7 +133,6 @@
     // Verificar si el día es martes o miércoles para bloquear la página
     const today = new Date().getDay();
     if (today === 2 || today === 3) {
-        alert('Los días martes y miércoles no se laboran. Gracias por preferirnos.');
         document.body.innerHTML = '<h1>Estamos cerrados los días martes y miércoles</h1>';
     }
 
