@@ -29,15 +29,15 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
             max-width: 400px;
-            box-sizing: border-box; /* Incluye el padding en el ancho del contenedor */
+            width: 90%; /* Ajusta el ancho al 90% del contenedor para mantener consistencia */
+            box-sizing: border-box;
         }
         label {
             font-size: 14px;
             display: block;
             margin-bottom: 5px;
-            box-sizing: border-box; /* Asegura que todo se mantenga dentro de los bordes */
+            box-sizing: border-box;
         }
         select, input, textarea {
             width: 100%;
@@ -45,7 +45,7 @@
             margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            box-sizing: border-box; /* Asegura que el padding no exceda los bordes */
+            box-sizing: border-box;
         }
         button {
             width: 100%;
@@ -59,150 +59,111 @@
         button:hover {
             background-color: #218838;
         }
-        /* Oculta el contenido hasta que se complete la carga */
-        #loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #F9E0AE;
-            z-index: 9999;
-            transition: transform 1s ease-in-out; /* Transición suave hacia arriba */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 500px; /* Ajusta para tablets */
+            }
         }
-
-        #loader img {
-            width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
-            height: 100px;
-            animation: spin infinite 1s linear;
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 600px; /* Ajusta para desktops */
+            }
         }
-
-        /* Texto de advertencia de conexión */
-        #connection-warning {
-            margin-top: 20px;
-            font-size: 18px;
-            color: red;
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Animación de giro infinito */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-
-    
     </style>
 </head>
 <body>
-    <div id="loader-wrapper">
-        <div id="loader">
-            <img src="https://papiquieropizzaya.github.io/pizza.png" alt="Cargando...">
-        </div>
-        <p id="connection-warning" style="display: none;">Verifica tu conexión a internet.</p>
+
+<div class="container">
+    <h3>Pedido de Pizzas</h3>
+
+    <label for="tamano">¿Qué tamaño de pizza deseas?</label>
+    <select id="tamano">
+        <option value="">Selecciona un tamaño</option>
+        <option value="pequena">Pequeña</option>
+        <option value="mediana">Mediana</option>
+        <option value="grande">Grande</option>
+    </select>
+
+    <label for="numSabores">¿Cuántos sabores deseas?</label>
+    <select id="numSabores">
+        <option value="">Selecciona una opción</option>
+        <option value="1">1 sabor</option>
+        <option value="2">2 sabores</option>
+        <option value="3">3 sabores</option>
+        <option value="4">4 sabores</option>
+    </select>
+
+    <div id="saboresContainer"></div>
+
+    <label for="domicilio">¿Deseas domicilio?</label>
+    <select id="domicilio">
+        <option value="no">No</option>
+        <option value="si">Sí</option>
+    </select>
+
+    <div id="direccionContainer" style="display: none;">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" placeholder="Ingresa la dirección">
     </div>
 
-    <div id="content" style="display: none;">
+    <label for="extra">¿Qué más deseas?</label>
+    <textarea id="extra" placeholder="Escribe algo extra..."></textarea>
 
-        <div class="container">
-            <h3>Pedido de Pizza</h3>
+    <label for="fecha">¿Para cuándo lo deseas?</label>
+    <input type="datetime-local" id="fecha">
+    <label for="rapido">
+        <input type="checkbox" id="rapido"> Lo más rápido posible
+    </label>
 
-            <label for="tamano">¿Qué tamaño de pizza deseas?</label>
-            <select id="tamano">
-                <option value="">Selecciona un tamaño</option>
-                <option value="pequena">Pequeña</option>
-                <option value="mediana">Mediana</option>
-                <option value="grande">Grande</option>
-            </select>
-            
-            <label for="numSabores">¿Cuántos sabores deseas?</label>
-            <select id="numSabores">
-                <option value="">Selecciona una opción</option>
-                <option value="1">1 sabor</option>
-                <option value="2">2 sabores</option>
-                <option value="3">3 sabores</option>
-                <option value="4">4 sabores</option>
-            </select>
-            
-            <div id="saboresContainer"></div>
+    <button id="whatsappBtn">Enviar pedido por WhatsApp</button>
+</div>
 
-            <label for="domicilio">¿Deseas domicilio?</label>
-            <select id="domicilio">
-                <option value="no">No</option>
-                <option value="si">Sí</option>
-            </select>
-
-            <div id="direccionContainer" style="display: none;">
-                <label for="direccion">Dirección</label>
-                <input type="text" id="direccion" placeholder="Ingresa la dirección">
-            </div>
-
-            <label for="extra">¿Qué más deseas?</label>
-            <textarea id="extra" placeholder="Escribe algo extra..."></textarea>
-
-            <label for="fecha">¿Para cuándo lo deseas?</label>
-            <input type="datetime-local" id="fecha">
-
-            <button id="whatsappBtn">Enviar pedido por WhatsApp</button>
-        </div>
-    </div>
 <script>
-    window.addEventListener("load", function() {
-    const loader = document.getElementById("loader");
-    const wrapper = document.getElementById("loader-wrapper");
-    const warning = document.getElementById("connection-warning");
-
-    // Mostrar advertencia después de 4 segundos si la página sigue cargando
-    const warningTimeout = setTimeout(function() {
-        warning.style.display = "block";
-    }, 4000);
-
-    loader.addEventListener("animationiteration", function() {
-        // Una vez que se complete la vuelta actual, realiza la transición hacia arriba
-        wrapper.style.transform = "translateY(-100%)"; // Mueve el fondo hacia arriba
-        document.getElementById("content").style.display = "block"; // Muestra el contenido
-        
-        // Cancela el mensaje de advertencia si ya cargó
-        clearTimeout(warningTimeout);
-
-        // Espera 1 segundo para que la transición termine antes de ocultar el wrapper
-        setTimeout(function() {
-            wrapper.style.display = "none";
-        }, 1000);
-    });
-
-    // Desactiva la animación infinita cuando la página está completamente cargada
-    loader.style.animationIterationCount = "1";
-});
-
-
-
-    
-
-
-
-
-
     const saboresContainer = document.getElementById('saboresContainer');
     const numSabores = document.getElementById('numSabores');
     const domicilio = document.getElementById('domicilio');
     const direccionContainer = document.getElementById('direccionContainer');
     const whatsappBtn = document.getElementById('whatsappBtn');
     const tamano = document.getElementById('tamano');
+    const fechaInput = document.getElementById('fecha');
+    const rapido = document.getElementById('rapido');
 
     const pizzas = ['Margarita', 'Bocadillo', 'Jamon', 'Vegetariana', 'Hawaiana','Campesina', 'Peperoni', 'Mexicana', '4 Estaciones', 'Cerro de la Vieja','La Mar', 'Mejue', 'Salami', 'Children', 'La Casa','Socavon', 'La Colorada', 'Marinera', 'Ranchera Borracha', 'El Profe','Chitarera', 'Puente Rojo', 'El Parche', 'Ambrosio Alfinger', 'La Honda', 'Camarones', 'Cuatro Quesos', 'Vegana', 'Trio'];
 
-    tamano.addEventListener('change', function() {
-        // Aquí puedes agregar lógica específica para los tamaños si es necesario
+    // Verificar si el día es martes o miércoles para bloquear la página
+    const today = new Date().getDay();
+    if (today === 2 || today === 3) {
+        alert('Los días martes y miércoles no se laboran. Gracias por preferirnos.');
+        document.body.innerHTML = '<h1>Estamos cerrados los días martes y miércoles</h1>';
+    }
+
+    // Restringir selección de días a martes y miércoles
+    fechaInput.addEventListener('input', function () {
+        const selectedDate = new Date(fechaInput.value);
+        if (selectedDate.getDay() === 2 || selectedDate.getDay() === 3) {
+            alert('Los días martes y miércoles no se laboran.');
+            fechaInput.value = '';
+        }
     });
 
-    numSabores.addEventListener('change', function() {
+    // Limitar horas de pedido de 4 pm a 12 am
+    fechaInput.addEventListener('click', function () {
+        const minTime = '16:00';
+        const maxTime = '23:59';
+        fechaInput.min = minTime;
+        fechaInput.max = maxTime;
+    });
+
+    // Manejar la opción de "Lo más rápido posible"
+    rapido.addEventListener('change', function () {
+        if (this.checked) {
+            fechaInput.disabled = true;
+        } else {
+            fechaInput.disabled = false;
+        }
+    });
+
+    numSabores.addEventListener('change', function () {
         saboresContainer.innerHTML = '';
         const cantidad = parseInt(this.value);
 
@@ -212,7 +173,7 @@
 
             const select = document.createElement('select');
             select.className = 'pizzaSelect';
-            
+
             const defaultOption = document.createElement('option');
             defaultOption.value = '';
             defaultOption.textContent = 'Selecciona un sabor';
@@ -230,7 +191,7 @@
         }
     });
 
-    domicilio.addEventListener('change', function() {
+    domicilio.addEventListener('change', function () {
         if (this.value === 'si') {
             direccionContainer.style.display = 'block';
         } else {
@@ -238,7 +199,7 @@
         }
     });
 
-    whatsappBtn.addEventListener('click', function() {
+    whatsappBtn.addEventListener('click', function () {
         let sabores = [];
         document.querySelectorAll('.pizzaSelect').forEach(select => {
             if (select.value) sabores.push(select.value);
@@ -248,7 +209,10 @@
         const domicilioSeleccionado = domicilio.value;
         const direccion = document.getElementById('direccion').value;
         const extra = document.getElementById('extra').value;
-        const fecha = document.getElementById('fecha').value;
+        const fecha = fechaInput.value;
+        const fechaMensaje = rapido.checked
+            ? 'lo más rápido posible'
+            : `para la fecha ${new Date(fecha).toLocaleDateString()} a las ${new Date(fecha).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}`;
 
         let mensaje = `Hola, Necesito una pizza ${tamaño} con ${sabores.length} sabor(es): ${sabores.join(', ')}.`;
 
@@ -262,14 +226,17 @@
             mensaje += ` Además, quiero: ${extra}.`;
         }
 
-        if (fecha) {
-            mensaje += ` Para la fecha y hora: ${fecha}.`;
-        }
+        mensaje += ` ${fechaMensaje}.`;
 
-        window.open(`https://wa.me/573123747146?text=${encodeURIComponent(mensaje)}`, '_blank');
+        // Adaptar la URL de WhatsApp para que funcione en móvil y PC
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const whatsappUrl = isMobile
+            ? `https://wa.me/573123747146?text=${encodeURIComponent(mensaje)}`
+            : `https://web.whatsapp.com/send?phone=573123747146&text=${encodeURIComponent(mensaje)}`;
+
+        window.open(whatsappUrl, '_blank');
     });
 </script>
-
 
 </body>
 </html>
