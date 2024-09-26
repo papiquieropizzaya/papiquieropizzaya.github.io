@@ -24,6 +24,17 @@
             height: 100vh;
             background-color: #fff2d7;
         }
+        a {
+            color: aqua;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: crimson;
+            background-color: rgba(0, 0, 0, 1);
+            text-decoration: none;
+        }
         .container {
             background-color: #fff;
             padding: 20px;
@@ -133,7 +144,7 @@
     // Verificar si el día es martes o miércoles para bloquear la página
     const today = new Date().getDay();
     if (today === 2 || today === 3) {
-        document.body.innerHTML = '<h1>Estamos cerrados los días martes y miércoles</h1>';
+        document.body.innerHTML = '<h1>Estamos cerrados los días martes y miércoles.  <a href="/"> Volver a el inicio </a></h1>';
     }
 
     // Restringir selección de días a martes y miércoles
