@@ -37,7 +37,7 @@
 
 body {
     
-    background-image: url('fondo.jpeg'); /* Reemplaza con la ruta real de tu imagen */
+    background-image: url('fondo-2.jpeg'); /* Reemplaza con la ruta real de tu imagen */
     background-repeat: repeat; /* Controla si la imagen se repite (opcional) */
     background-size: cover; /* Controla el tamaño de la imagen (opcional) */
     background-position: center; /* Controla la posición de la imagen (opcional) */
@@ -102,7 +102,8 @@ h2 {
 .im { 
     width: 100%;
     height: auto;
-
+    border-radius: 16px;
+    margin-top: 10px;
 }
 
 .map { 
@@ -130,7 +131,7 @@ a:hover {
 }
 
 .carousel {
-    max-width: 100%;
+    max-width: 60%;
     overflow: hidden;
     position: relative;
     border-radius: 14px;
@@ -172,7 +173,7 @@ a:hover {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
-    min-width: 100;
+    min-width: 100px;
 
 }
 
@@ -188,7 +189,7 @@ a:hover {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
-    min-width: 100;
+    min-width: 100px;
 
 }
 
@@ -216,7 +217,7 @@ a:hover {
 @media (min-width: 1000px) {
     
     .carousel {
-        max-width: 60%;
+        width: 100%;
         overflow: hidden;
         position: relative;
         border-radius: 14px;
@@ -230,10 +231,17 @@ a:hover {
     }
 
     .im { 
-        width: 40%;
+        width: 100%;
         height: auto;
+        transition: transform 0.3s ease-in-out;
+        border-radius: 16px;
+        margin-top: 10px;
     }
-
+    
+    .im:hover {
+        transform: scale(1.1);
+    }
+    
     .container-pizzas {
         display: flex;
     }
@@ -354,4 +362,26 @@ a:hover {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 
+}
+
+
+.im-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vid-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
