@@ -1,3 +1,9 @@
+* {
+    cursor: url('https://papiquieropizzaya.com/pizza-cursor-3.png'), auto;
+}
+
+
+
 /* Oculta el contenido hasta que se complete la carga */
 #loader-wrapper {
     position: fixed;
@@ -49,6 +55,7 @@ body {
     font-family: "Poppins", sans-serif;
     font-weight: 100;
     font-style: normal;
+    cursor: url('pizza-cursor-3.png'), auto;
 }
 
 .footer {
@@ -171,7 +178,7 @@ a:hover {
     display: inline-block;
     font-size: 55px;
     margin: 4px 2px;
-    cursor: pointer;
+    cursor: url('pizza-cursor-3.png'), auto;
     border-radius: 4px;
     min-width: 100px;
 
@@ -187,7 +194,7 @@ a:hover {
     display: inline-block;
     font-size: 55px;
     margin: 4px 2px;
-    cursor: pointer;
+    cursor: url('pizza-cursor-3.png'), auto;
     border-radius: 4px;
     min-width: 100px;
 
@@ -302,7 +309,7 @@ a:hover {
 
 .burger {
     display: none;
-    cursor: pointer;
+    cursor: url('pizza-cursor-3.png'), auto;
 }
 
 .burger div {
