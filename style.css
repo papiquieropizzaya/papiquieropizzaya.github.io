@@ -1,5 +1,5 @@
 * {
-    cursor: url('https://papiquieropizzaya.com/pizza-cursor-3.png'), auto;
+    cursor: url('pizza-cursor-3.png'), auto;
 }
 
 
@@ -243,10 +243,12 @@ a:hover {
         transition: transform 0.3s ease-in-out;
         border-radius: 16px;
         margin-top: 10px;
+        display: block; /* Asegura que actúe como un bloque */
+        margin: 0 auto; /* Centra horizontalmente */
     }
     
     .im:hover {
-        transform: scale(1.1);
+        transform: scale(1.075);
     }
     
     .container-pizzas {
