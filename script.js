@@ -87,3 +87,33 @@ function moveSlide() {
 }
 
 setInterval(moveSlide, 4500); // Cambia de imagen cada 4,5 segundos
+
+document.addEventListener("DOMContentLoaded", () => {
+    const imageWrappers = document.querySelectorAll(".image-wrapper");
+    let selectedIndex = null;
+
+    imageWrappers.forEach((wrapper, index) => {
+        const image = wrapper.querySelector(".menu-image");
+        const menuContent = wrapper.querySelector(".menu-content");
+
+        image.addEventListener("click", () => {
+            if (selectedIndex === index) {
+                menuContent.style.display = "none";
+                image.classList.remove("selected");
+                selectedIndex = null;
+            } else {
+                document.querySelectorAll(".menu-content").forEach(content => {
+                    content.style.display = "none";
+                });
+                document.querySelectorAll(".menu-image").forEach(img => {
+                    img.classList.remove("selected");
+                });
+
+                menuContent.style.display = "block";
+                menuContent.classList.add("fade-in");
+                image.classList.add("selected");
+                selectedIndex = index;
+            }
+        });
+    });
+});
