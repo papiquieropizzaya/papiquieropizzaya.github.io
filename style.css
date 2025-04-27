@@ -1,5 +1,8 @@
 * {
     cursor: url('pizza-cursor-3.png'), auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -360,7 +363,7 @@ a:hover {
     }
 
     .toggle .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
+        transform: rotate(-45deg)  gogogogotranslate(-5px, 6px);
     }
 
     .toggle .line2 {
@@ -394,3 +397,130 @@ a:hover {
     justify-content: center;
     align-items: center;
 }
+
+/* Contenedor principal */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 10px;
+    position: relative;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  
+  /* Fila de imágenes */
+  .image-grid {
+    display: flex;
+    justify-content: center;
+    gap: 75px;
+    flex-wrap: wrap;
+  }
+  
+  .image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Imagen circular */
+  .menu-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 40%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  /* Imagen seleccionada */
+  .selected {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+  }
+  
+  /* Contenido del menú */
+  .menu-content {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+    position: absolute;
+    top: 100%;
+    padding: 10px;
+    z-index: 10;
+  }
+  
+  .menu-content img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  /* Posicionamiento dinámico */
+  .menu-left {
+    left: 0;
+    transform: translateX(0);
+  }
+  
+  .menu-center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .menu-right {
+    right: 0;
+    left: auto;
+    transform: translateX(0);
+  }
+  
+  /* Estilos del título y descripción */
+  .menu-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+  
+  .menu-description {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.55);
+  }
+  
+  /* Imagen dentro del menú */
+  .menu-image-full {
+    width: 100%;
+    border-radius: 10px;
+    max-width: 100%;
+  }
+  
+  /* Responsive */
+  @media (min-width: 768px) {
+    .menu-content {
+      width: 46%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .menu-content {
+      width: 100%;
+    }
+  }
+  
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .fade-enter-from, .fade-leave-to {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
