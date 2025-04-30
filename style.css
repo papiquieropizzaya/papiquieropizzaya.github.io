@@ -265,12 +265,6 @@ a:hover {
     
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -363,7 +357,7 @@ a:hover {
     }
 
     .toggle .line1 {
-        transform: rotate(-45deg)  gogogogotranslate(-5px, 6px);
+        transform: rotate(-45deg) translate(-5px, 6px);
     }
 
     .toggle .line2 {
@@ -407,7 +401,7 @@ a:hover {
     padding-top: 10px;
     position: relative;
     margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 875px;
   }
   
   /* Fila de imágenes */
@@ -524,3 +518,43 @@ a:hover {
     opacity: 0;
     transform: translateY(-5px);
   }
+
+
+
+ 
+  
+  .music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    z-index: 9999;
+  }
+  
+  /* Botón */
+  #playPauseBtn {
+    background: #ff5e5e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Para celular: centrado abajo */
+  @media (max-width: 768px) {
+    .music-player {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  #volumeControl {
+    width: 120px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  
