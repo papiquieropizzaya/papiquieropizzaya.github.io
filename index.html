@@ -174,5 +174,86 @@
         </div>
     </div>
         <script src="script.js"></script>
+        <div class="music-player">
+            <audio id="background-music" loop>
+              <source src="./prueba.mp3" type="audio/mpeg">
+              Tu navegador no soporta audio HTML5.
+            </audio>
+            <button id="playPauseBtn">🔊 Activar música</button>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              const music = document.getElementById('background-music');
+              const playPauseBtn = document.getElementById('playPauseBtn');
+              const videos = document.querySelectorAll('video');
+              let isPlaying = false;
+              let pausedByVideo = false;
+            
+              playPauseBtn.addEventListener('click', () => {
+                if (!isPlaying) {
+                  music.play().then(() => {
+                    isPlaying = true;
+                    playPauseBtn.textContent = '⏸️ Pausar';
+                  }).catch(err => {
+                    console.log('Error al reproducir:', err);
+                  });
+                } else {
+                  music.pause();
+                  isPlaying = false;
+                  pausedByVideo = false; // se pausó manualmente
+                  playPauseBtn.textContent = '▶️ Reanudar';
+                }
+              });
+            
+              videos.forEach(video => {
+                video.addEventListener('play', () => {
+                  if (!music.paused) {
+                    music.pause();
+                    pausedByVideo = true;
+                    isPlaying = false;
+                    playPauseBtn.textContent = '▶️ Reanudar';
+                  }
+                });
+            
+                video.addEventListener('pause', () => {
+                  if (pausedByVideo) {
+                    music.play().then(() => {
+                      isPlaying = true;
+                      playPauseBtn.textContent = '⏸️ Pausar';
+                      pausedByVideo = false;
+                    }).catch(err => {
+                      console.log('No se pudo reanudar la música automáticamente:', err);
+                    });
+                  }
+                });
+            
+                video.addEventListener('ended', () => {
+                  if (pausedByVideo) {
+                    music.play().then(() => {
+                      isPlaying = true;
+                      playPauseBtn.textContent = '⏸️ Pausar';
+                      pausedByVideo = false;
+                    }).catch(err => {
+                      console.log('No se pudo reanudar la música después del video:', err);
+                    });
+                  }
+                });
+              });
+            const volumeControl = document.getElementById('volumeControl');
 
+            // Establece el volumen inicial
+            music.volume = 0.5;
+
+            // Cambia el volumen al mover el control
+            volumeControl.addEventListener('input', () => {
+              music.volume = volumeControl.value;
+            });
+            });
+
+
+            </script>
+            
+          
+          
 </body></html>
