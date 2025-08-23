@@ -341,6 +341,15 @@ footer p {
     margin: 5px 0;
     font-size: 0.9em;
 }
+footer a {
+    color: aqua;
+    text-decoration: none;
+    text-transform: none;
+    transition: color 0.3s;
+}
+footer a:hover {
+    color: red;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -497,3 +506,66 @@ footer p {
     opacity: 0;
     transform: translateY(-5px);
   }
+
+
+
+
+      .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    padding: 20px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    text-align: center;
+    }
+    
+    .modal-content a {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    transition: color 0.3s ease, transform 0.3s ;
+    }
+    
+    .modal-content a:hover {
+    color: whitesmoke;
+    transform: scale(1.2);
+    }
+    
+    .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    }
+
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    }
+}

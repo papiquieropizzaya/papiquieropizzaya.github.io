@@ -80,7 +80,7 @@
 
         <section id="menu" class="container section">
             <h2>Nuestro Menú</h2>
-            <p class="menu-intro">Todas nuestras pizzas son preparadas en horno de leña y vienen con un delicioso borde de queso. Además acabamos de incorporar comídas rápidas.</p>
+            <p class="menu-intro">Todas nuestras pizzas son preparadas en horno de leña y vienen con un delicioso borde de queso. Además acabamos de incorporar comída rápidas.</p>
             <div class="menu-container" id="menu" style="margin-bottom: 200px;">
                 <div class="image-grid">
                     <div class="image-wrapper" data-index="0">
@@ -126,6 +126,66 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="menu-category">
+                <h3>Hamburguesa</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Hamburguesa Ranchera">
+                        <h4>Ranchera</h4>
+                        <p>Pan brioche, salsa de la casa, salsa miel mostaza, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, queso cheddar, jamón chorizo y tocineta. + Papa a la Francesa</p>
+                        <p class="price">$16.000</p>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Hamburguesa Americana">
+                        <h4>Americana</h4>
+                        <p>Pan brioche, salsa de la casa, papas fósforos,  cebolla caramelizada, rodajas de pepinillos croqueta de carne, queso cheddar, jamón, tocineta. + Papa a la Francesa</p>
+                        <p class="price">$15.000</p>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Hamburguesa Urbana">
+                        <h4>Urbana</h4>
+                        <p>Pan brioche, salsa de la casa, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, pollo, aderezo de la casa, tocineta, queso cheddar, jamón. + Papa a la Francesa</p>
+                        <p class="price">$17.000</p>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Vegetariana" alt="Hamburguesa Tres sabores">
+                        <h4>Tres sabores</h4>
+                        <p>Pan brioche, salsa de la casa, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, chuleta cerdo, pollo, huevo frito, queso cheddar, jamón. + Papa a la Francesa</p>
+                        <p class="price">$22.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Perros Calientes</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Perros Calientes Venezolano">
+                        <h4>Venezolano</h4>
+                        <p>Pan, salchicha, ensalada (repollo, zanahoria y aderezo), papa fosforito, queso, tocineta, salsas.</p>
+                        <p class="price">$8.500</p>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Perros Calientes Perripollo">
+                        <h4>Perripollo</h4>
+                        <p>Pan, salchicha, papa fosforito, pollo, queso cheddar, salsas.</p>
+                        <p class="price">$9.900</p>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Perros Calientes Americano">
+                        <h4>Americano</h4>
+                        <p>Pan, salchicha americana, papa fosforito, cebolla caramelizada, resll de pepinillo, salsas.</p>
+                        <p class="price">$14.000</p>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Vegetariana" alt="Perros Calientes Aleman">
+                        <h4>Aleman</h4>
+                        <p>Pan, salchicha americana,rels (salami, chorizo y cebolla), papa fosforito, salsas.</p>
+                        <p class="price">$14.000</p>
+                    </div>
+                </div>
+            </div>
 
             <div class="menu-category">
                 <h3>Bebidas</h3>
@@ -158,11 +218,20 @@
         <section id="contacto" class="container section">
             <h2>Contáctanos</h2>
             <div class="contact-info">
-                <p><strong>Teléfono y WhatsApp:</strong> <a href="tel:+573123747146">+57 312 3747146</a></p>
+                <p><strong><a id="productsBtn" target="_parent" style="cursor: pointer;">Teléfono y WhatsApp</a></strong></p>
                 <p><strong>Dirección:</strong> Cl. 5 #3-50, Chinácota, Norte de Santander</p>
                 <p><strong>Horario:</strong> Jueves a Lunes: 4:00 PM - 10:00 PM</p>
                 <p>¡Haz tu pedido directamente por WhatsApp o llámanos!</p>
                  <a href="/pedido-en-linea/" class="btn btn-success" target="_blank">Pedir por WhatsApp</a>
+            </div>
+            <div id="productsModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">
+                        
+                    </span>
+                    <a href="https://wa.me/+573123747146"><strong>WhatsApp</strong></a>
+                    <a href="tel:3123747146"><strong>Llamar</strong></a>
+                </div>
             </div>
             <div class="map-placeholder" style="margin-top: 20px; text-align:center;">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.6773412726964!2d-72.60039247417065!3d7.6065724791568785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6631463a0b0c07%3A0x27776117f6c64119!2sPapi%20quiero%20pizza%20ya!5e0!3m2!1ses-419!2sco!4v1696085969190!5m2!1ses-419!2sco" width="100%" height="450px" style="border:7px; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -173,11 +242,10 @@
     <footer>
         <div class="container">
             <p>&copy; 2024 Papi Quiero Pizza Ya. Todos los derechos reservados. Chinácota, Colombia.</p>
-            <p>Made By <a href="https://codematehub.com" target="_blank" rel="noopener noreferrer" style="color: aqua; text-decoration: none; text-transform: none;">CodemateHub</a></p>
+            <p>Made By <<a href="https://codematehub.com" target="_blank" rel="noopener noreferrer">CodemateHub</a>></p>
             </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-
