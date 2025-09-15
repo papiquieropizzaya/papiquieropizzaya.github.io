@@ -569,3 +569,16 @@ footer a:hover {
     text-align: center;
     }
 }
+
+.vid-location {
+    width: 40%;
+    border-radius: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .vid-location {
+    align-self: center;
+    width: 100%;
+    border-radius: 16px;
+    }
+}
