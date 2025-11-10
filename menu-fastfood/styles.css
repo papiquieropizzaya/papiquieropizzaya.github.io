@@ -50,8 +50,7 @@ h1 {
 }
 
 .im {
-    width: 50%;
-    height: 100%;
+    width: 75%;
     border-radius: 16px;
     transition: transform 0.3s ease-in-out;
     margin-top: 10px;
