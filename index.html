@@ -19,238 +19,244 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9448273062479555" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="#hero" class="logo">Papi Quiero Pizza Ya</a>
-            <ul>
-                <li><a href="#hero">Inicio</a></li>
-                <li><a href="#menu">Menú</a></li>
-                <!-- <li><a href="#promociones">Promociones</a></li> -->
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section id="hero">
-            <div class="hero-slider">
-                <div class="slide active" style="background-image: url('Carrusel/11-2.jpg');">
-                    <div class="hero-content container">
-                        <h1>¡Bienvenidos a Papi Quiero Pizza Ya!</h1>
-                        <p>Pizza a Leña + Borde De Queso Únicas, Chinácota.</p>
-                        <a href="https://papiquieropizzaya.com/pedido-en-linea/" target="_blank" rel="noopener noreferrer"></a>
-                    </div>
-                </div>
-                <div class="slide" style="background-image: url('Carrusel/12-2.jpg');">
-                    <div class="hero-content container">
-                        <h1>Calidad y Sabor</h1>
-                        <p>Los mejores ingredientes para la pizza perfecta.</p>
-                        <a href="#menu" class="btn btn-primary">Ver Menú</a>
-                    </div>
-                </div>
-            </div>
-            <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-            <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
-        </section>
+    <div id="loader-wrapper">
+        <div id="loader">
+            <img src="https://papiquieropizzaya.com/pizza.png" alt="Cargando...">
+        </div>
+        <p id="connection-warning" style="display: none;">Verifica tu conexión a internet...</p>
+    </div>
 
-         <!--<section id="promociones" class="container section">
-            <h2>Promociones Especiales</h2>
-            <div class="promo-grid">
-                <div class="promo-item">
-                    <a href="/prom/" target="_blank" style="text-decoration: none; color: black;" rel="noopener noreferrer"><img src="./prom/img/pizzaburguer.jpeg" style="height: 300px;" alt="Promoción 1">
-                    <h3>PizzaBurguer</h3>
-                    <p>Un nuevo producto, una hamburguesa con ingredientes de pizza</p>
-                    <p class="price">$25.000</p></a>
-                </div>
-                <div class="promo-item">
-                    <img src="https://via.placeholder.com/400x300/FFC300/000000?text=Promo+2" alt="Promoción 2">
-                    <h3>Pizza del Día</h3>
-                    <p>Nuestra especialidad con descuento.</p>
-                    <p class="price">$XX.XXX</p>
-                </div>
-                <div class="promo-item">
-                    <img src="https://via.placeholder.com/400x300/FFC300/000000?text=Promo+3" alt="Promoción 3">
-                    <h3>Domingo Llanero</h3>
-                    <p>2x1 en pizzas seleccionadas.</p>
-                    <p class="price">$XX.XXX</p>
-                </div>
-            </div>
-        </section>--> 
 
-        <section id="menu" class="container section">
-            <h2>Nuestro Menú</h2>
-            <p class="menu-intro">Todas nuestras pizzas son preparadas en horno de leña y vienen con un delicioso borde de queso. Además acabamos de incorporar comída rápidas.</p>
-            <div class="menu-container" id="menu" style="margin-bottom: 200px;">
-                <div class="image-grid">
-                    <div class="image-wrapper" data-index="0">
-                        <a href="/menu-fastfood/" target="_blank" rel="noopener noreferrer"><img src="burger.jpg" alt="Imagen" class="menu-image"></a>
-                        <div class="menu-content menu-left">
+    <div id="content" style="display: none;">
 
+        <header>
+            <nav class="container">
+                <a href="#hero" class="logo">Papi Quiero Pizza Ya</a>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#menu">Menú</a></li>
+                    <!-- <li><a href="#promociones">Promociones</a></li> -->
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="hero">
+                <div class="hero-slider">
+                    <div class="slide active" style="background-image: url('Carrusel/11-2.jpg');">
+                        <div class="hero-content container">
+                            <h1>¡Bienvenidos a Papi Quiero Pizza Ya!</h1>
+                            <p>Pizza a Leña + Borde De Queso Únicas, Chinácota.</p>
+                            <a href="https://papiquieropizzaya.com/pedido-en-linea/" target="_blank" rel="noopener noreferrer"></a>
                         </div>
                     </div>
-                    <div class="image-wrapper" data-index="1">
-                        <a href="/menu-pizza/" target="_blank" rel="noopener noreferrer"><img src="pizza.png" alt="Imagen" class="menu-image"></a>
-                        <div class="menu-content menu-center">
+                    <div class="slide" style="background-image: url('Carrusel/12-2.jpg');">
+                        <div class="hero-content container">
+                            <h1>Calidad y Sabor</h1>
+                            <p>Los mejores ingredientes para la pizza perfecta.</p>
+                            <a href="#menu" class="btn btn-primary">Ver Menú</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+            </section>
+
+            <!--<section id="promociones" class="container section">
+                <h2>Promociones Especiales</h2>
+                <div class="promo-grid">
+                    <div class="promo-item">
+                        <a href="/prom/" target="_blank" style="text-decoration: none; color: black;" rel="noopener noreferrer"><img src="./prom/img/pizzaburguer.jpeg" style="height: 300px;" alt="Promoción 1">
+                        <h3>PizzaBurguer</h3>
+                        <p>Un nuevo producto, una hamburguesa con ingredientes de pizza</p>
+                        <p class="price">$25.000</p></a>
+                    </div>
+                    <div class="promo-item">
+                        <img src="https://via.placeholder.com/400x300/FFC300/000000?text=Promo+2" alt="Promoción 2">
+                        <h3>Pizza del Día</h3>
+                        <p>Nuestra especialidad con descuento.</p>
+                        <p class="price">$XX.XXX</p>
+                    </div>
+                    <div class="promo-item">
+                        <img src="https://via.placeholder.com/400x300/FFC300/000000?text=Promo+3" alt="Promoción 3">
+                        <h3>Domingo Llanero</h3>
+                        <p>2x1 en pizzas seleccionadas.</p>
+                        <p class="price">$XX.XXX</p>
+                    </div>
+                </div>
+            </section>--> 
+
+            <section id="menu" class="container section">
+                <h2>Nuestro Menú</h2>
+                <p class="menu-intro">Todas nuestras pizzas son preparadas en horno de leña y vienen con un delicioso borde de queso. Además acabamos de incorporar comída rápidas.</p>
+                <div class="menu-container" id="menu" style="margin-bottom: 200px;">
+                    <div class="image-grid">
+                        <div class="image-wrapper" data-index="0">
+                            <a href="/menu-fastfood/" target="_blank" rel="noopener noreferrer"><img src="burger.jpg" alt="Imagen" class="menu-image"></a>
+                            <div class="menu-content menu-left">
+
+                            </div>
+                        </div>
+                        <div class="image-wrapper" data-index="1">
+                            <a href="/menu-pizza/" target="_blank" rel="noopener noreferrer"><img src="pizza.png" alt="Imagen" class="menu-image"></a>
+                            <div class="menu-content menu-center">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category">
+                    <h3>Pizzas más populares</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Pizza Campesina">
+                            <h4>Campesina</h4>
+                            <p>Queso, pollo, maiz y tocineta.</p>
+                            <p class="price">Desde $29.000</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Pizza Hawaiana">
+                            <h4>Hawaiana</h4>
+                            <p>Queso, jamon y piña.</p>
+                            <p class="price">Desde $28.000</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./Carrusel/4.jpg" alt="Pizza La honda">
+                            <h4>La honda</h4>
+                            <p>Queso, jamon, chorizo, peperoni, tocineta y kabano.</p>
+                            <p class="price">Desde $36.000</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Vegetariana" alt="Pizza La colorada">
+                            <h4>La colorada</h4>
+                            <p>Queso, pollo y champiñones.</p>
+                            <p class="price">Desde $28.000</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-category">
+                    <h3>Hamburguesa</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Hamburguesa Ranchera">
+                            <h4>Sencilla</h4>
+                            <p>Pan brioche, salsa de la casa, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne o pollo, queso cheddar, jamón.</p>
+                            <p class="price">$16.000</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Hamburguesa Americana">
+                            <h4>Ranchera</h4>
+                            <p>Pan brioche, salsa de la casa, salsa miel mostaza, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, queso cheddar, jamón chorizo y tocineta. + Papa a la Francesa.</p>
+                            <p class="price">$15.000</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Hamburguesa Urbana">
+                            <h4>Americana</h4>
+                            <p>Pan brioche, salsa de la casa, papas fósforos,  cebolla caramelizada, rodajas de pepinillos croqueta de carne, queso cheddar, jamón, tocineta. + Papa a la Francesa.</p>
+                            <p class="price">$17.000</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Vegetariana" alt="Hamburguesa Tres sabores">
+                            <h4>Mixta</h4>
+                            <p>Pan brioche, salsa de la casa, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, pollo, aderezo de la casa, tocineta, queso cheddar, jamón. + Papa a la Francesa.</p>
+                            <p class="price">$22.000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Perros Calientes</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Perros Calientes Venezolano">
+                            <h4>Sencillo</h4>
+                            <p>Pan, salchicha, papa fosforito, queso, salsas.</p>
+                            <p class="price">$8.500</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Perros Calientes Perripollo">
+                            <h4>Sencillo + Jamón</h4>
+                            <p>Pan, salchicha, papa fosforito, queso, jamón salsas.</p>
+                            <p class="price">$9.900</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Perros Calientes Americano">
+                            <h4>Perro pio pio</h4>
+                            <p>Pan, salchicha americana, papa fosforito, pollo, queso cheddar, maíz, tocineta y salsas de la casa.</p>
+                            <p class="price">$14.000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Bebidas</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <h4>Gaseosas</h4>
+                            <p>Personales, 1.5L, 2.5L y 3L.</p>
+                            <p class="price">Desde $2.500</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Cervezas Nacionales</h4>
+                            <p>Aguila, Poker, Club Colombia.</p>
+                            <p class="price">Desde $4.500</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Otros</h4>
+                            <p>Agua, Soda, Speed, Gatorade...</p>
+                            <p class="price">Desde $2.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="nosotros" class="container section bg-light" style="background-color: white;">
+                <h2>Sobre Nosotros</h2>
+                <p>"Papi Quiero Pizza Ya" nació en el corazón de Chinácota con la pasión de ofrecer pizzas únicas, horneadas a la leña y con un inconfundible borde de queso que nos hace especiales. Nos dedicamos a usar ingredientes frescos y de la mejor calidad para llevar a tu mesa una experiencia de sabor inolvidable. ¡Visítanos y descubre por qué somos los preferidos!</p>
+                <img src="fondo3.jpg" alt="Horno de leña Papi Quiero Pizza Ya" style="max-width:100%; height:auto; margin-top:20px; border-radius: 8px;">
+            </section>
+
+            <section id="contacto" class="container section">
+                <h2>Contáctanos</h2>
+                <div class="contact-info">
+                    <p><strong><a id="productsBtn" target="_parent" style="cursor: pointer;">Teléfono y WhatsApp</a></strong></p>
+                    <p><strong>Dirección:</strong> Cl. 5 #3-50, Chinácota, Norte de Santander</p>
+                    <p><strong>Horario:</strong> Jueves a Lunes: 4:00 PM - 10:00 PM</p>
+                    <p>¡Haz tu pedido directamente por WhatsApp o llámanos!</p>
+                    <a href="/pedido-en-linea/" class="btn btn-success" target="_blank">Pedir por WhatsApp</a>
+                </div>
+                <div id="productsModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">
                             
-                        </div>
+                        </span>
+                        <a href="https://wa.me/+573123747146"><strong>WhatsApp</strong></a>
+                        <a href="tel:3123747146"><strong>Llamar</strong></a>
                     </div>
                 </div>
-            </div>
-            <div class="menu-category">
-                <h3>Pizzas más populares</h3>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Pizza Campesina">
-                        <h4>Campesina</h4>
-                        <p>Queso, pollo, maiz y tocineta.</p>
-                        <p class="price">Desde $29.000</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Pizza Hawaiana">
-                        <h4>Hawaiana</h4>
-                        <p>Queso, jamon y piña.</p>
-                        <p class="price">Desde $28.000</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Pizza La honda">
-                        <h4>La honda</h4>
-                        <p>Queso, jamon, chorizo, peperoni, tocineta y kabano.</p>
-                        <p class="price">Desde $36.000</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Vegetariana" alt="Pizza La colorada">
-                        <h4>La colorada</h4>
-                        <p>Queso, pollo y champiñones.</p>
-                        <p class="price">Desde $28.000</p>
-                    </div>
+                <div class="map-placeholder" style="margin-top: 20px; text-align:center;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.6773412726964!2d-72.60039247417065!3d7.6065724791568785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6631463a0b0c07%3A0x27776117f6c64119!2sPapi%20quiero%20pizza%20ya!5e0!3m2!1ses-419!2sco!4v1696085969190!5m2!1ses-419!2sco" width="100%" height="450px" style="border:7px; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-            </div>
-            
-            <div class="menu-category">
-                <h3>Hamburguesa</h3>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Hamburguesa Ranchera">
-                        <h4>Ranchera</h4>
-                        <p>Pan brioche, salsa de la casa, salsa miel mostaza, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, queso cheddar, jamón chorizo y tocineta. + Papa a la Francesa</p>
-                        <p class="price">$16.000</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Hamburguesa Americana">
-                        <h4>Americana</h4>
-                        <p>Pan brioche, salsa de la casa, papas fósforos,  cebolla caramelizada, rodajas de pepinillos croqueta de carne, queso cheddar, jamón, tocineta. + Papa a la Francesa</p>
-                        <p class="price">$15.000</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Hamburguesa Urbana">
-                        <h4>Urbana</h4>
-                        <p>Pan brioche, salsa de la casa, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, pollo, aderezo de la casa, tocineta, queso cheddar, jamón. + Papa a la Francesa</p>
-                        <p class="price">$17.000</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Vegetariana" alt="Hamburguesa Tres sabores">
-                        <h4>Tres sabores</h4>
-                        <p>Pan brioche, salsa de la casa, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, chuleta cerdo, pollo, huevo frito, queso cheddar, jamón. + Papa a la Francesa</p>
-                        <p class="price">$22.000</p>
-                    </div>
-                </div>
-            </div>
+                <!--<div>
+                    <video src="./vid-location.mp4" controls class="vid-location"></video>
+                </div>-->
+            </section>
+        </main>
 
-            <div class="menu-category">
-                <h3>Perros Calientes</h3>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Perros Calientes Venezolano">
-                        <h4>Venezolano</h4>
-                        <p>Pan, salchicha, ensalada (repollo, zanahoria y aderezo), papa fosforito, queso, tocineta, salsas.</p>
-                        <p class="price">$8.500</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Perros Calientes Perripollo">
-                        <h4>Perripollo</h4>
-                        <p>Pan, salchicha, papa fosforito, pollo, queso cheddar, salsas.</p>
-                        <p class="price">$9.900</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Perros Calientes Americano">
-                        <h4>Americano</h4>
-                        <p>Pan, salchicha americana, papa fosforito, cebolla caramelizada, resll de pepinillo, salsas.</p>
-                        <p class="price">$14.000</p>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Vegetariana" alt="Perros Calientes Aleman">
-                        <h4>Aleman</h4>
-                        <p>Pan, salchicha americana,rels (salami, chorizo y cebolla), papa fosforito, salsas.</p>
-                        <p class="price">$14.000</p>
-                    </div>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Papi Quiero Pizza Ya. Todos los derechos reservados. Chinácota, Colombia.</p>
+                <p>Made By <<a href="https://codematehub.com" target="_blank" rel="noopener noreferrer">CodemateHub</a>></p>
                 </div>
-            </div>
+        </footer>
 
-            <div class="menu-category">
-                <h3>Bebidas</h3>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <h4>Gaseosas</h4>
-                        <p>Personales, 1.5L, 2.5L y 3L.</p>
-                        <p class="price">Desde $2.500</p>
-                    </div>
-                    <div class="menu-item">
-                        <h4>Cervezas Nacionales</h4>
-                        <p>Aguila, Poker, Club Colombia.</p>
-                        <p class="price">Desde $4.500</p>
-                    </div>
-                    <div class="menu-item">
-                        <h4>Otros</h4>
-                        <p>Agua, Soda, Speed, Gatorade...</p>
-                        <p class="price">Desde $2.000</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="nosotros" class="container section bg-light" style="background-color: white;">
-            <h2>Sobre Nosotros</h2>
-            <p>"Papi Quiero Pizza Ya" nació en el corazón de Chinácota con la pasión de ofrecer pizzas únicas, horneadas a la leña y con un inconfundible borde de queso que nos hace especiales. Nos dedicamos a usar ingredientes frescos y de la mejor calidad para llevar a tu mesa una experiencia de sabor inolvidable. ¡Visítanos y descubre por qué somos los preferidos!</p>
-            <img src="fondo3.jpg" alt="Horno de leña Papi Quiero Pizza Ya" style="max-width:100%; height:auto; margin-top:20px; border-radius: 8px;">
-        </section>
-
-        <section id="contacto" class="container section">
-            <h2>Contáctanos</h2>
-            <div class="contact-info">
-                <p><strong><a id="productsBtn" target="_parent" style="cursor: pointer;">Teléfono y WhatsApp</a></strong></p>
-                <p><strong>Dirección:</strong> Cl. 5 #3-50, Chinácota, Norte de Santander</p>
-                <p><strong>Horario:</strong> Jueves a Lunes: 4:00 PM - 10:00 PM</p>
-                <p>¡Haz tu pedido directamente por WhatsApp o llámanos!</p>
-                 <a href="/pedido-en-linea/" class="btn btn-success" target="_blank">Pedir por WhatsApp</a>
-            </div>
-            <div id="productsModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">
-                        
-                    </span>
-                    <a href="https://wa.me/+573123747146"><strong>WhatsApp</strong></a>
-                    <a href="tel:3123747146"><strong>Llamar</strong></a>
-                </div>
-            </div>
-            <div class="map-placeholder" style="margin-top: 20px; text-align:center;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.6773412726964!2d-72.60039247417065!3d7.6065724791568785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6631463a0b0c07%3A0x27776117f6c64119!2sPapi%20quiero%20pizza%20ya!5e0!3m2!1ses-419!2sco!4v1696085969190!5m2!1ses-419!2sco" width="100%" height="450px" style="border:7px; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <!--<div>
-                <video src="./vid-location.mp4" controls class="vid-location"></video>
-            </div>-->
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Papi Quiero Pizza Ya. Todos los derechos reservados. Chinácota, Colombia.</p>
-            <p>Made By <<a href="https://codematehub.com" target="_blank" rel="noopener noreferrer">CodemateHub</a>></p>
-            </div>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
 
 </html>
-
