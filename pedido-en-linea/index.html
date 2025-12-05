@@ -1,269 +1,615 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Haz tu pedido en linea</title>
+    <title>Papi Quiero Pizza Ya - Menú</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Hola, Pizzas En Leña Con Borde Relleno De Queso, Son Unicas, Son Diferentes" />
-    <meta name="robots" content="index,follow" />
-    <meta name="author" content="Abel Nicolás Jaimes Orjuela" />
-    <meta name="keywrods" content="papiquieropizzaya, Papi Quiero Pizza Ya, Papi quiero pizza ya, papi quiero pizza, Papi quiero pizza, Papi Quiero Pizza, Chinácota, chinácota, Chinacota, chinacota, Pizza Chinácota, Pizza chinácota, Pizza Chinacota, Pizza chinacota, pizza Chinácota, pizza chinácota, pizza Chinacota, pizza chinacota" />
     <link rel="icon" href="https://papiquieropizzaya.com/Icon.png">
-    <meta name="google-site-verification" content="WfiA4hGyjafIAhHt9pbjUjHsb3ArnhuDPosnt4M6rSk" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #fff2d7;
-        }
-        a {
-            color: aqua;
-            background-color: rgba(0, 0, 0, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: crimson;
-            background-color: rgba(0, 0, 0, 1);
-            text-decoration: none;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%; /* Ajusta el ancho al 90% del contenedor para mantener consistencia */
-            box-sizing: border-box;
-        }
-        label {
-            font-size: 14px;
-            display: block;
-            margin-bottom: 5px;
-            box-sizing: border-box;
-        }
-        select, input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: color 0.5s;
-        }
-        .button:hover {
-            background-color: #218838;
-        }
-        @media (min-width: 768px) {
-            .container {
-                max-width: 500px; /* Ajusta para tablets */
-            }
-        }
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 600px; /* Ajusta para desktops */
-            }
-        }
-    </style>
-    <!-- <script>
-        window.onload = function() {
-            // Redirigir a otra página
-            window.location.href = "https://papiquieropizzaya.com/ferias/pedido-en-linea/";
-        };
+    
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        // Prevenir que el usuario use el botón atrás
-        window.onpopstate = function() {
-            window.history.forward();
-        };
-    </script> -->
+    <style>
+        :root {
+            --primary-red: #ce2c22;
+            --dark-bg: #1a1a1a;
+            --paper-bg: #fff2d7;
+            --text-color: #333;
+            --accent-green: #28a745;
+            --accent-blue: #007bff;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0 0 100px 0;
+            background-color: var(--paper-bg);
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Encabezado */
+        .header { text-align: center; margin-bottom: 30px; position: relative; }
+        .header h1 {
+            font-family: 'Special Elite', cursive;
+            color: var(--primary-red);
+            font-size: 2.2rem;
+            margin: 10px 0;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+        .back-link {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            font-size: 24px;
+            color: var(--dark-bg);
+            text-decoration: none;
+        }
+
+        /* Acordeón */
+        .accordion-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border-left: 5px solid var(--primary-red);
+        }
+
+        .accordion-header {
+            padding: 15px 20px;
+            background: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.2rem;
+            color: var(--dark-bg);
+            user-select: none;
+        }
+        
+        .accordion-header i.fa-chevron-right {
+            transition: transform 0.3s ease;
+            color: var(--primary-red);
+        }
+        .accordion-header.active i.fa-chevron-right { transform: rotate(90deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: #fffdf9;
+        }
+        .accordion-content.open { padding: 20px; border-top: 1px solid #eee; }
+
+        /* Estilos Generales Inputs */
+        label { font-weight: 700; display: block; margin-bottom: 5px; font-size: 0.9rem; color: #555; }
+        input[type="number"], select, input[type="text"], textarea, input[type="datetime-local"] {
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            border: 1px solid #ddd; border-radius: 8px; font-size: 16px;
+            box-sizing: border-box; background: #fff;
+        }
+        input:focus, select:focus { outline: none; border-color: var(--primary-red); }
+
+        /* Elementos Dinámicos */
+        .dynamic-item {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px dashed #ccc;
+            animation: fadeIn 0.4s;
+        }
+        .pizza-header {
+            font-family: 'Special Elite';
+            color: var(--primary-red);
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        /* Total Flotante */
+        .floating-total {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: var(--dark-bg); color: white;
+            padding: 15px 20px; display: flex;
+            justify-content: space-between; align-items: center;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2); z-index: 90;
+            box-sizing: border-box;
+        }
+        .total-price { font-size: 1.3rem; font-weight: bold; color: #ffcc00; display: flex; flex-direction: column; }
+        .total-price span { font-size: 0.6em; color: #ccc; font-weight: normal; }
+        .btn-order {
+            background: var(--accent-green); color: white; border: none;
+            padding: 12px 25px; border-radius: 50px; font-weight: bold;
+            font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px;
+        }
+
+        /* MODALES (GPS y AVISOS) */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+            z-index: 1000; justify-content: center; align-items: center;
+            backdrop-filter: blur(4px); animation: fadeIn 0.3s;
+        }
+        .modal-box {
+            background: white; padding: 25px; border-radius: 15px;
+            width: 90%; max-width: 400px; text-align: center;
+            position: relative; border-top: 5px solid var(--primary-red);
+        }
+        .modal-box h3 { margin-top: 0; color: var(--primary-red); font-family: 'Special Elite'; font-size: 1.5rem; }
+        
+        .modal-btn-group { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+        .btn-modal { padding: 12px 20px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; color: white; width: 100%; }
+        
+        .btn-green { background: var(--accent-green); }
+        .btn-blue { background: var(--accent-blue); }
+        .btn-gray { background: #666; }
+        .btn-red { background: var(--primary-red); }
+
+        /* Checkbox wrapper */
+        .checkbox-wrapper {
+            display: flex; align-items: center; background: #fff;
+            padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px;
+        }
+        .checkbox-wrapper input { width: auto; margin-right: 10px; margin-bottom: 0; }
+        
+        .hidden { display: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    </style>
 </head>
 <body>
-    <!-- <h1>Redirigiendo...</h1> -->
-
-    
 
     <div class="container">
-        <h2><a href="/"><---</a></h2>
-
-        <h3>Pedido de Pizzas</h3>
-
-        <label for="tamano">¿Qué tamaño de pizza deseas?</label>
-        <select id="tamano">
-            <option value="">Selecciona un tamaño</option>
-            <option value="pequena">Pequeña</option>
-            <option value="mediana">Mediana</option>
-            <option value="grande">Grande</option>
-        </select>
-
-        <label for="numSabores">¿Cuántos sabores deseas?</label>
-        <select id="numSabores">
-            <option value="">Selecciona una opción</option>
-            <option value="1">1 sabor</option>
-            <option value="2">2 sabores</option>
-            <option value="3">3 sabores</option>
-            <option value="4">4 sabores</option>
-        </select>
-
-        <div id="saboresContainer"></div>
-
-        <label for="domicilio">¿Deseas domicilio?</label>
-        <select id="domicilio">
-            <option value="no">No</option>
-            <option value="si">Sí</option>
-        </select>
-
-        <div id="direccionContainer" style="display: none;">
-            <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" placeholder="Ingresa la dirección">
+        <div class="header">
+            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i></a>
+            <h1>Haz tu Pedido</h1>
+            <p>Sabor en leña 🔥</p>
         </div>
 
-        <label for="extra">¿Qué más deseas?</label>
-        <textarea id="extra" placeholder="Escribe algo extra..."></textarea>
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><i class="fas fa-pizza-slice"></i> Pizzas</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="accordion-content">
+                <label>¿Cuántas pizzas deseas?</label>
+                <input type="number" id="qtyPizzas" min="0" placeholder="0" oninput="renderPizzas()">
+                <div id="pizzasContainer"></div>
+                <p style="font-size:0.8em; color:#666; font-style:italic;">* Pizzas combinadas: Se cobra el promedio de los sabores + $1.000 (2 sabores) o + $2.000 (3-4 sabores).</p>
+            </div>
+        </div>
 
-        <label for="fecha">¿Para cuándo lo deseas?</label>
-        <input type="datetime-local" id="fecha">
-        <label for="rapido" >
-            <input type="checkbox" id="rapido"> Lo más rápido posible
-        </label>
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><i class="fas fa-hamburger"></i> Hamburguesas</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="accordion-content">
+                <label>¿Cuántas hamburguesas?</label>
+                <input type="number" id="qtyBurgers" min="0" placeholder="0" oninput="renderDynamicItems('burger')">
+                <div id="burgerContainer"></div>
+            </div>
+        </div>
 
-        <button id="whatsappBtn" class="button">Enviar pedido por WhatsApp</button>
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><i class="fas fa-hotdog"></i> Perros Calientes</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="accordion-content">
+                <label>¿Cuántos perros?</label>
+                <input type="number" id="qtyDogs" min="0" placeholder="0" oninput="renderDynamicItems('dog')">
+                <div id="dogContainer"></div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><i class="fas fa-utensils"></i> Salchipapas</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="accordion-content">
+                <label>¿Cuántas salchipapas?</label>
+                <input type="number" id="qtySalchi" min="0" placeholder="0" oninput="calculateTotal()">
+                <p style="color: #666; font-size: 0.9em;">Salchipapa Tradicional ($18.000)</p>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 2px dashed #ccc; margin: 30px 0;">
+
+        <h3><i class="fas fa-motorcycle"></i> Entrega</h3>
+        <select id="deliveryType" onchange="handleDeliveryChange()">
+            <option value="pickup">Recoger en el local</option>
+            <option value="delivery">A Domicilio (Desde $5.000)</option>
+        </select>
+
+        <div id="addressContainer" class="hidden">
+            <div id="gpsSuccessMsg" class="hidden" style="color: var(--accent-green); margin-bottom: 10px; font-weight: bold;">
+                <i class="fas fa-check-circle"></i> Ubicación GPS guardada
+            </div>
+            <label>Dirección exacta:</label>
+            <input type="text" id="addressInput" placeholder="Dirección, Barrio, color de casa...">
+            <input type="hidden" id="gpsCoords">
+        </div>
+
+        <label>Notas adicionales:</label>
+        <textarea id="extraNotes" rows="2" placeholder="Sin salsas, cambio de 50mil, etc..."></textarea>
+
+        <h3><i class="far fa-clock"></i> Horario</h3>
+        <div class="checkbox-wrapper">
+            <input type="checkbox" id="asap" checked onchange="toggleDateInput()">
+            <label for="asap" style="cursor:pointer;">Lo más rápido posible</label>
+        </div>
+        <div id="dateContainer" class="hidden">
+            <label>Fecha y hora:</label>
+            <input type="datetime-local" id="dateInput">
+        </div>
+
+    </div>
+
+    <div class="floating-total">
+        <div class="total-price" id="displayTotal">
+            $0
+            <span>Total estimado</span>
+        </div>
+        <button class="btn-order" onclick="sendToWhatsapp()">
+            Enviar Pedido <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <div class="modal-overlay" id="gpsModal">
+        <div class="modal-box">
+            <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--primary-red); margin-bottom: 15px;"></i>
+            <h3>Ubicación</h3>
+            <p>Necesitamos tu ubicación para el domicilio.</p>
+            <div class="modal-btn-group">
+                <button class="btn-modal btn-gray" onclick="closeGpsModal(false)">Escribir Manual</button>
+                <button class="btn-modal btn-green" onclick="getGPS()">Usar GPS</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="scheduleModal">
+        <div class="modal-box">
+            <i class="fas fa-calendar-day" style="font-size: 3rem; color: #ffcc00; margin-bottom: 15px;"></i>
+            <h3>Aviso de Horario</h3>
+            <p>Normalmente descansamos los Martes y Miércoles, pero por ser Diciembre podríamos estar abiertos.</p>
+            <div class="modal-btn-group" style="flex-direction: column;">
+                <button class="btn-modal btn-red" onclick="closeScheduleModal()">Sí, voy a pedir</button>
+                <button class="btn-modal btn-blue" onclick="openVerifyModal()">Verificar si está abierto</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="verifyModal">
+        <div class="modal-box">
+            <i class="fas fa-phone-alt" style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 15px;"></i>
+            <h3>Verificar</h3>
+            <p>Contáctanos para confirmar atención hoy:</p>
+            <div class="modal-btn-group">
+                <a href="https://wa.me/573123747146" target="_blank" class="btn-modal btn-green" style="text-decoration: none; display:block; text-align:center;">
+                    <i class="fab fa-whatsapp"></i> Escribir
+                </a>
+                <a href="tel:3123747146" class="btn-modal btn-blue" style="text-decoration: none; display:block; text-align:center;">
+                    <i class="fas fa-phone"></i> Llamar
+                </a>
+            </div>
+            <button onclick="document.getElementById('verifyModal').style.display='none'" style="margin-top:15px; background:none; border:none; text-decoration:underline; color:#666;">Cerrar</button>
+        </div>
     </div>
 
     <script>
-        const saboresContainer = document.getElementById('saboresContainer');
-        const numSabores = document.getElementById('numSabores');
-        const domicilio = document.getElementById('domicilio');
-        const direccionContainer = document.getElementById('direccionContainer');
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        const tamano = document.getElementById('tamano');
-        const fechaInput = document.getElementById('fecha');
-        const rapido = document.getElementById('rapido');
+        // --- PRECIOS ---
+        const PIZZA_PRICES = {
+            'Margarita': { P: 18000, M: 32000, G: 45000 },
+            'Jamon': { P: 20000, M: 35000, G: 48000 },
+            'Bocadillo': { P: 20000, M: 35000, G: 48000 },
+            'Hawaiana': { P: 22000, M: 38000, G: 50000 },
+            'Peperoni': { P: 22000, M: 38000, G: 50000 },
+            'Pollo Champiñones': { P: 24000, M: 40000, G: 52000 },
+            'Mexicana': { P: 25000, M: 42000, G: 55000 },
+            'Ranchera': { P: 25000, M: 42000, G: 55000 },
+            'Vegetariana': { P: 22000, M: 38000, G: 50000 },
+            '4 Estaciones': { P: 26000, M: 45000, G: 58000 },
+            'La Casa': { P: 26000, M: 45000, G: 58000 }
+        };
 
-        const pizzas = ['Margarita', 'Bocadillo', 'Jamon', 'Vegetariana', 'Hawaiana','Campesina', 'Peperoni', 'Mexicana', '4 Estaciones', 'Cerro de la Vieja','La Mar', 'Mejue', 'Salami', 'Children', 'La Casa','Socavon', 'La Colorada', 'Marinera', 'Puente Rojo', 'El Parche', 'Ambrosio Alfinger', 'La Honda', 'Camarones', 'Cuatro Quesos', 'Vegana', 'Trio'];
+        const OTHER_PRICES = {
+            burger: { "Clásica": 15000, "Doble Carne": 22000, "Especial": 25000, "Pollo Crispy": 18000, "Mixta": 20000 },
+            dog: { "Sencillo": 10000, "Especial": 15000, "Suizo": 18000 },
+            salchipapa: 18000
+        };
 
-        // Verificar si el día es martes o miércoles para bloquear la página
-        const today = new Date().getDay();
-        if (today === 2 || today === 3) {
-            document.body.innerHTML = '<h1>Estamos cerrados los días martes y miércoles.  <a href="/"> Volver a el inicio </a></h1>';
+        const DELIVERY_FEE = 5000;
+
+        // --- INICIALIZACIÓN ---
+        window.onload = function() {
+            const today = new Date().getDay(); 
+            if (today === 2 || today === 3) {
+                document.getElementById('scheduleModal').style.display = 'flex';
+            }
+        };
+
+        function closeScheduleModal() { document.getElementById('scheduleModal').style.display = 'none'; }
+        function openVerifyModal() {
+            document.getElementById('scheduleModal').style.display = 'none';
+            document.getElementById('verifyModal').style.display = 'flex';
         }
 
-        // Restringir selección de días a martes y miércoles
-        fechaInput.addEventListener('input', function () {
-            const selectedDate = new Date(fechaInput.value);
-            if (selectedDate.getDay() === 2 || selectedDate.getDay() === 3) {
-                alert('Los días martes y miércoles no se laboran.');
-                fechaInput.value = '';
-            }
-        });
-
-        // Limitar horas de pedido de 4 pm a 12 am
-        fechaInput.addEventListener('click', function () {
-            const minTime = '16:00';
-            const maxTime = '23:59';
-            fechaInput.min = minTime;
-            fechaInput.max = maxTime;
-        });
-
-        // Manejar la opción de "Lo más rápido posible"
-        rapido.addEventListener('change', function () {
-            if (this.checked) {
-                fechaInput.disabled = true;
+        // --- ACORDEÓN ---
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            header.classList.toggle('active');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('open');
             } else {
-                fechaInput.disabled = false;
+                header.classList.add('active');
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + "px";
             }
-        });
+        }
 
-        numSabores.addEventListener('change', function () {
-            saboresContainer.innerHTML = '';
-            const cantidad = parseInt(this.value);
+        // --- PIZZAS ---
+        function renderPizzas() {
+            const qty = parseInt(document.getElementById('qtyPizzas').value) || 0;
+            const container = document.getElementById('pizzasContainer');
+            container.innerHTML = '';
 
-            for (let i = 0; i < cantidad; i++) {
-                const label = document.createElement('label');
-                label.textContent = `¿Qué sabor de pizza deseas?`;
+            for(let i=0; i<qty; i++) {
+                const div = document.createElement('div');
+                div.className = 'dynamic-item pizza-block';
+                div.innerHTML = `
+                    <div class="pizza-header">Pizza #${i+1}</div>
+                    <label>Tamaño:</label>
+                    <select class="pizza-size" onchange="updatePizzaFlavors(this)">
+                        <option value="">Selecciona tamaño</option>
+                        <option value="P">Pequeña</option>
+                        <option value="M">Mediana</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="flavors-wrapper hidden">
+                        <label>¿Cuántos sabores?</label>
+                        <select class="num-flavors" onchange="renderFlavorSelects(this)">
+                            <option value="1">1 Sabor</option>
+                            <option value="2">2 Sabores (+1.000)</option>
+                            <option value="3">3 Sabores (+2.000)</option>
+                            <option value="4">4 Sabores (+2.000)</option>
+                        </select>
+                        <div class="flavors-list"></div>
+                    </div>
+                `;
+                container.appendChild(div);
+            }
+            adjustHeight(container);
+            calculateTotal();
+        }
 
+        function updatePizzaFlavors(sizeSelect) {
+            const wrapper = sizeSelect.parentElement.querySelector('.flavors-wrapper');
+            if(sizeSelect.value) {
+                wrapper.classList.remove('hidden');
+                const flavorList = wrapper.querySelector('.flavors-list');
+                if(flavorList.innerHTML === '') renderFlavorSelects(wrapper.querySelector('.num-flavors'));
+                else updatePricesInSelects(wrapper, sizeSelect.value);
+            } else {
+                wrapper.classList.add('hidden');
+            }
+            adjustHeight(sizeSelect.closest('.accordion-content'));
+            calculateTotal();
+        }
+
+        function renderFlavorSelects(numSelect) {
+            const qty = numSelect.value;
+            const wrapper = numSelect.parentElement;
+            const list = wrapper.querySelector('.flavors-list');
+            const size = wrapper.parentElement.querySelector('.pizza-size').value;
+            
+            list.innerHTML = '';
+            for(let i=0; i<qty; i++) {
                 const select = document.createElement('select');
-                select.className = 'pizzaSelect';
-
-                const defaultOption = document.createElement('option');
-                defaultOption.value = '';
-                defaultOption.textContent = 'Selecciona un sabor';
-                select.appendChild(defaultOption);
-
-                pizzas.forEach(pizza => {
-                    const option = document.createElement('option');
-                    option.value = pizza;
-                    option.textContent = pizza;
-                    select.appendChild(option);
-                });
-
-                saboresContainer.appendChild(label);
-                saboresContainer.appendChild(select);
+                select.className = 'flavor-select';
+                select.onchange = calculateTotal;
+                let opts = `<option value="" data-price="0">Sabor ${i+1}...</option>`;
+                for (const [flavor, prices] of Object.entries(PIZZA_PRICES)) {
+                    const price = prices[size] || 0;
+                    opts += `<option value="${flavor}" data-price="${price}">${flavor} ($${price.toLocaleString()})</option>`;
+                }
+                select.innerHTML = opts;
+                list.appendChild(select);
             }
-        });
+            adjustHeight(list.closest('.accordion-content'));
+            calculateTotal();
+        }
 
-        domicilio.addEventListener('change', function () {
-            if (this.value === 'si') {
-                direccionContainer.style.display = 'block';
-            } else {
-                direccionContainer.style.display = 'none';
+        function updatePricesInSelects(wrapper, size) {
+            const numSelect = wrapper.querySelector('.num-flavors');
+            renderFlavorSelects(numSelect);
+        }
+
+        // --- HAMBURGUESAS Y PERROS ---
+        function renderDynamicItems(type) {
+            const qtyId = type === 'burger' ? 'qtyBurgers' : 'qtyDogs';
+            const containerId = type === 'burger' ? 'burgerContainer' : 'dogContainer';
+            const menuData = type === 'burger' ? OTHER_PRICES.burger : OTHER_PRICES.dog;
+            const icon = type === 'burger' ? '🍔' : '🌭';
+
+            const qty = parseInt(document.getElementById(qtyId).value) || 0;
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            for (let i = 0; i < qty; i++) {
+                const div = document.createElement('div');
+                div.className = 'dynamic-item';
+                let opts = `<option value="" data-price="0">Selecciona tipo...</option>`;
+                for (const [name, price] of Object.entries(menuData)) {
+                    opts += `<option value="${name}" data-price="${price}">${name} ($${price.toLocaleString()})</option>`;
+                }
+                div.innerHTML = `<label>${icon} ${type === 'burger' ? 'Hamburguesa' : 'Perro'} #${i+1}</label>
+                                 <select class="item-select" data-type="${type}" onchange="calculateTotal()">${opts}</select>`;
+                container.appendChild(div);
             }
-        });
+            adjustHeight(container);
+            calculateTotal();
+        }
 
-        whatsappBtn.addEventListener('click', function () {
-            let sabores = [];
-            document.querySelectorAll('.pizzaSelect').forEach(select => {
-                if (select.value) sabores.push(select.value);
+        function adjustHeight(element) {
+            const content = element.closest('.accordion-content');
+            if(content && content.classList.contains('open')) content.style.maxHeight = "none";
+        }
+
+        // --- CÁLCULO TOTAL (LÓGICA ACTUALIZADA) ---
+        function calculateTotal() {
+            let total = 0;
+
+            // 1. Pizzas
+            document.querySelectorAll('.pizza-block').forEach(block => {
+                const size = block.querySelector('.pizza-size').value;
+                if(size) {
+                    const flavorsPrices = [];
+                    block.querySelectorAll('.flavor-select').forEach(sel => {
+                        const price = parseInt(sel.options[sel.selectedIndex]?.dataset.price) || 0;
+                        if(price > 0) flavorsPrices.push(price);
+                    });
+
+                    if (flavorsPrices.length > 0) {
+                        // Promedio
+                        const sum = flavorsPrices.reduce((a, b) => a + b, 0);
+                        const avg = sum / flavorsPrices.length;
+                        
+                        // Adicionales
+                        let surcharge = 0;
+                        const numFlavors = flavorsPrices.length;
+                        if (numFlavors === 2) surcharge = 1000;
+                        if (numFlavors >= 3) surcharge = 2000;
+
+                        total += (avg + surcharge);
+                    }
+                }
             });
 
-            const tamaño = tamano.value;
-            const domicilioSeleccionado = domicilio.value;
-            const direccion = document.getElementById('direccion').value;
-            const extra = document.getElementById('extra').value;
-            const fecha = fechaInput.value;
-            const fechaMensaje = rapido.checked
-                ? 'lo más rápido posible'
-                : `para la fecha ${new Date(fecha).toLocaleDateString()} a las ${new Date(fecha).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}`;
+            // 2. Hamburguesas y Perros
+            document.querySelectorAll('.item-select').forEach(sel => {
+                total += parseInt(sel.options[sel.selectedIndex]?.dataset.price) || 0;
+            });
 
-            let mensaje = `Hola, Necesito una pizza ${tamaño} con ${sabores.length} sabor(es): ${sabores.join(', ')}.`;
+            // 3. Salchipapas
+            const qtySalchi = parseInt(document.getElementById('qtySalchi').value) || 0;
+            total += (qtySalchi * OTHER_PRICES.salchipapa);
 
-            if (domicilioSeleccionado === 'si') {
-                mensaje += ` La necesito con domicilio en: ${direccion}.`;
-            } else if (direccion) {
-                mensaje += ` La necesito en la dirección: ${direccion}.`;
+            // 4. Domicilio
+            if (document.getElementById('deliveryType').value === 'delivery') total += DELIVERY_FEE;
+
+            // Mostrar entero (Math.round para evitar decimales en el promedio)
+            document.getElementById('displayTotal').innerHTML = `$${Math.round(total).toLocaleString('es-CO')} <span>Total estimado</span>`;
+        }
+
+        // --- DOMICILIO Y GPS ---
+        function handleDeliveryChange() {
+            const type = document.getElementById('deliveryType').value;
+            const addrContainer = document.getElementById('addressContainer');
+            if (type === 'delivery') {
+                document.getElementById('gpsModal').style.display = 'flex';
+                addrContainer.classList.remove('hidden');
+            } else {
+                addrContainer.classList.add('hidden');
             }
+            calculateTotal();
+        }
 
-            if (extra) {
-                mensaje += ` Además, quiero: ${extra}.`;
-            }
+        function closeGpsModal(useGps) {
+            document.getElementById('gpsModal').style.display = 'none';
+            if(!useGps) document.getElementById('addressInput').focus();
+        }
 
-            mensaje += ` ${fechaMensaje}.`;
+        function getGPS() {
+            const btn = document.querySelector('.btn-green');
+            btn.innerText = "Cargando...";
+            if (!navigator.geolocation) { alert("Tu navegador no soporta GPS"); closeGpsModal(false); return; }
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const link = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+                    document.getElementById('gpsCoords').value = link;
+                    document.getElementById('addressInput').value = "Ubicación GPS adjunta";
+                    document.getElementById('gpsSuccessMsg').classList.remove('hidden');
+                    closeGpsModal(true);
+                    btn.innerText = "Usar GPS";
+                },
+                (err) => {
+                    alert("Error al obtener ubicación. Ingrésala manualmente.");
+                    closeGpsModal(false);
+                    btn.innerText = "Usar GPS";
+                }
+            );
+        }
 
-            // Adaptar la URL de WhatsApp para que funcione en móvil y PC
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            const whatsappUrl = isMobile
-                ? `https://wa.me/573123747146?text=${encodeURIComponent(mensaje)}`
-                : `https://web.whatsapp.com/send?phone=573123747146&text=${encodeURIComponent(mensaje)}`;
+        // --- FECHA Y WHATSAPP ---
+        function toggleDateInput() {
+            const isAsap = document.getElementById('asap').checked;
+            document.getElementById('dateContainer').classList.toggle('hidden', isAsap);
+        }
 
-            window.open(whatsappUrl, '_blank');
-        });
+        function sendToWhatsapp() {
+            let msg = "Hola *Papi Quiero Pizza Ya*, deseo pedir:\n\n";
+            let hasItems = false;
+
+            // Pizzas
+            document.querySelectorAll('.pizza-block').forEach((block, index) => {
+                const sizeMap = { 'P': 'Pequeña', 'M': 'Mediana', 'G': 'Grande' };
+                const sizeVal = block.querySelector('.pizza-size').value;
+                if(sizeVal) {
+                    const flavors = [];
+                    block.querySelectorAll('.flavor-select').forEach(sel => { if(sel.value) flavors.push(sel.value); });
+                    if(flavors.length > 0) {
+                        msg += `🍕 *Pizza #${index+1}:* ${sizeMap[sizeVal]} (${flavors.join(' / ')})\n`;
+                        hasItems = true;
+                    }
+                }
+            });
+
+            // Otros
+            document.querySelectorAll('.item-select').forEach(sel => {
+                if(sel.value) {
+                    const type = sel.dataset.type === 'burger' ? '🍔' : '🌭';
+                    msg += `${type} ${sel.value}\n`;
+                    hasItems = true;
+                }
+            });
+            const salchi = document.getElementById('qtySalchi').value;
+            if(salchi > 0) { msg += `🍟 ${salchi}x Salchipapa Tradicional\n`; hasItems = true; }
+
+            if(!hasItems) { alert("Pedido vacío"); return; }
+
+            const total = document.getElementById('displayTotal').innerText.split('\n')[0];
+            msg += `\n💰 *Total Aprox:* ${total}`;
+            
+            const notes = document.getElementById('extraNotes').value;
+            if(notes) msg += `\n📝 *Nota:* ${notes}`;
+
+            const delivery = document.getElementById('deliveryType').value;
+            if(delivery === 'delivery') {
+                const addr = document.getElementById('addressInput').value;
+                const gps = document.getElementById('gpsCoords').value;
+                msg += `\n🛵 *DOMICILIO* ($${DELIVERY_FEE.toLocaleString()})\n📍 Dirección: ${addr}`;
+                if(gps) msg += `\n🗺 Mapa: ${gps}`;
+            } else { msg += `\n🏪 Recojo en local`; }
+
+            const asap = document.getElementById('asap').checked;
+            msg += asap ? `\n⏰ Lo más rápido posible` : `\n⏰ Hora: ${document.getElementById('dateInput').value}`;
+
+            const url = `https://api.whatsapp.com/send?phone=573123747146&text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
     </script>
-
 </body>
 </html>
