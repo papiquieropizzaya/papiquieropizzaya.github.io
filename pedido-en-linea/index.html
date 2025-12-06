@@ -23,16 +23,21 @@
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0 0 100px 0;
-            background-color: var(--paper-bg);
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             color: var(--text-color);
         }
+
+        /**/
 
         .container {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
+            background-color: var(--paper-bg);
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            border-radius: 16px;
         }
+
+        
 
         /* Encabezado */
         .header { text-align: center; margin-bottom: 30px; position: relative; }
@@ -165,148 +170,166 @@
         .hidden { display: none; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+    body {
+      min-height: 100vh;
+      background-color: #000;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3Cellipse fill='none' stroke-width='10.1' stroke-opacity='0.49' id='a' rx='600' ry='450'/%3E%3C/defs%3E%3Cg transform='scale(0.775)' style='transform-origin:center'%3E%3Cg transform='rotate(174.6 0 0)' style='transform-origin:center'%3E%3Cg transform='rotate(-160 0 0)' style='transform-origin:center'%3E%3Cg transform='translate(1000 750)'%3E%3Cuse stroke='%2327002B' href='%23a' transform='rotate(-60 0 0) scale(0.4)'/%3E%3Cuse stroke='%23300030' href='%23a' transform='rotate(-50 0 0) scale(0.5)'/%3E%3Cuse stroke='%233a0034' href='%23a' transform='rotate(-40 0 0) scale(0.6)'/%3E%3Cuse stroke='%23440038' href='%23a' transform='rotate(-30 0 0) scale(0.7)'/%3E%3Cuse stroke='%234e003c' href='%23a' transform='rotate(-20 0 0) scale(0.8)'/%3E%3Cuse stroke='%2359003f' href='%23a' transform='rotate(-10 0 0) scale(0.9)'/%3E%3Cuse stroke='%23640041' href='%23a'/%3E%3Cuse stroke='%236f0043' href='%23a' transform='rotate(10 0 0) scale(1.1)'/%3E%3Cuse stroke='%237a0044' href='%23a' transform='rotate(20 0 0) scale(1.2)'/%3E%3Cuse stroke='%23850045' href='%23a' transform='rotate(30 0 0) scale(1.3)'/%3E%3Cuse stroke='%23910044' href='%23a' transform='rotate(40 0 0) scale(1.4)'/%3E%3Cuse stroke='%239c0044' href='%23a' transform='rotate(50 0 0) scale(1.5)'/%3E%3Cuse stroke='%23a70042' href='%23a' transform='rotate(60 0 0) scale(1.6)'/%3E%3Cuse stroke='%23b10040' href='%23a' transform='rotate(70 0 0) scale(1.7)'/%3E%3Cuse stroke='%23bc003e' href='%23a' transform='rotate(80 0 0) scale(1.8)'/%3E%3Cuse stroke='%23c6003a' href='%23a' transform='rotate(90 0 0) scale(1.9)'/%3E%3Cuse stroke='%23d00036' href='%23a' transform='rotate(100 0 0) scale(2)'/%3E%3Cuse stroke='%23d90032' href='%23a' transform='rotate(110 0 0) scale(2.1)'/%3E%3Cuse stroke='%23e2002c' href='%23a' transform='rotate(120 0 0) scale(2.2)'/%3E%3Cuse stroke='%23ea0026' href='%23a' transform='rotate(130 0 0) scale(2.3)'/%3E%3Cuse stroke='%23f2001e' href='%23a' transform='rotate(140 0 0) scale(2.4)'/%3E%3Cuse stroke='%23f90013' href='%23a' transform='rotate(150 0 0) scale(2.5)'/%3E%3Cuse stroke='%23FF0000' href='%23a' transform='rotate(160 0 0) scale(2.6)'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-attachment: fixed;
+      background-size: 105%;
+      background-position: center;
+    }
+
+    /* Contenido para que veas encima del fondo */
+    .content {
+      padding: 40px;
+      font-size: 32px;
+      text-align: center;
+    }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="header">
-            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i></a>
-            <h1>Haz tu Pedido</h1>
-            <p>Sabor en leña 🔥</p>
+
+        <div class="container">
+            <div class="header">
+                <a href="/" class="back-link"><i class="fas fa-arrow-left"></i></a>
+                <h1>Haz tu Pedido</h1>
+                <p>Sabor en leña 🔥</p>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-pizza-slice"></i> Pizzas</span>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <label>¿Cuántas pizzas deseas?</label>
+                    <input type="number" id="qtyPizzas" min="0" placeholder="0" oninput="renderPizzas()">
+                    <div id="pizzasContainer"></div>
+                    <p style="font-size:0.8em; color:#666; font-style:italic;">* Pizzas combinadas: Se cobra el promedio de los sabores + $1.000 (2 sabores) o + $2.000 (3-4 sabores).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-hamburger"></i> Hamburguesas</span>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <label>¿Cuántas hamburguesas?</label>
+                    <input type="number" id="qtyBurgers" min="0" placeholder="0" oninput="renderDynamicItems('burger')">
+                    <div id="burgerContainer"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-hotdog"></i> Perros Calientes</span>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <label>¿Cuántos perros?</label>
+                    <input type="number" id="qtyDogs" min="0" placeholder="0" oninput="renderDynamicItems('dog')">
+                    <div id="dogContainer"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-utensils"></i> Salchipapas</span>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <label>¿Cuántas salchipapas?</label>
+                    <input type="number" id="qtySalchipapa" min="0" placeholder="0" oninput="renderDynamicItems('salchipapa')">
+                    <div id="salchipapaContainer"></div>
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 2px dashed #ccc; margin: 30px 0;">
+
+            <h3><i class="fas fa-motorcycle"></i> Entrega</h3>
+            <select id="deliveryType" onchange="handleDeliveryChange()">
+                <option value="pickup">Recoger en el local</option>
+                <option value="delivery">A Domicilio (Desde $5.000)</option>
+            </select>
+
+            <div id="addressContainer" class="hidden">
+                <div id="gpsSuccessMsg" class="hidden" style="color: var(--accent-green); margin-bottom: 10px; font-weight: bold;">
+                    <i class="fas fa-check-circle"></i> Ubicación GPS guardada
+                </div>
+                <label>Dirección exacta:</label>
+                <input type="text" id="addressInput" placeholder="Dirección, Barrio, color de casa...">
+                <input type="hidden" id="gpsCoords">
+            </div>
+
+            <label>Notas adicionales:</label>
+            <textarea id="extraNotes" rows="2" placeholder="Sin salsas, cambio de 50mil, etc..."></textarea>
+
+            <h3><i class="far fa-clock"></i> Horario</h3>
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="asap" checked onchange="toggleDateInput()">
+                <label for="asap" style="cursor:pointer;">Lo más rápido posible</label>
+            </div>
+            <div id="dateContainer" class="hidden">
+                <label>Fecha y hora:</label>
+                <input type="datetime-local" id="dateInput">
+            </div>
+
         </div>
 
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span><i class="fas fa-pizza-slice"></i> Pizzas</span>
-                <i class="fas fa-chevron-right"></i>
+        <div class="floating-total">
+            <div class="total-price" id="displayTotal">
+                $0
+                <span>Total estimado</span>
             </div>
-            <div class="accordion-content">
-                <label>¿Cuántas pizzas deseas?</label>
-                <input type="number" id="qtyPizzas" min="0" placeholder="0" oninput="renderPizzas()">
-                <div id="pizzasContainer"></div>
-                <p style="font-size:0.8em; color:#666; font-style:italic;">* Pizzas combinadas: Se cobra el promedio de los sabores + $1.000 (2 sabores) o + $2.000 (3-4 sabores).</p>
+            <button class="btn-order" onclick="sendToWhatsapp()">
+                Enviar Pedido <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+
+        <div class="modal-overlay" id="gpsModal">
+            <div class="modal-box">
+                <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--primary-red); margin-bottom: 15px;"></i>
+                <h3>Ubicación</h3>
+                <p>Necesitamos tu ubicación para el domicilio.</p>
+                <div class="modal-btn-group">
+                    <button class="btn-modal btn-gray" onclick="closeGpsModal(false)">Escribir Manual</button>
+                    <button class="btn-modal btn-green" onclick="getGPS()">Usar GPS</button>
+                </div>
             </div>
         </div>
 
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span><i class="fas fa-hamburger"></i> Hamburguesas</span>
-                <i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="accordion-content">
-                <label>¿Cuántas hamburguesas?</label>
-                <input type="number" id="qtyBurgers" min="0" placeholder="0" oninput="renderDynamicItems('burger')">
-                <div id="burgerContainer"></div>
-            </div>
-        </div>
-
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span><i class="fas fa-hotdog"></i> Perros Calientes</span>
-                <i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="accordion-content">
-                <label>¿Cuántos perros?</label>
-                <input type="number" id="qtyDogs" min="0" placeholder="0" oninput="renderDynamicItems('dog')">
-                <div id="dogContainer"></div>
+        <div class="modal-overlay" id="scheduleModal">
+            <div class="modal-box">
+                <i class="fas fa-calendar-day" style="font-size: 3rem; color: #ffcc00; margin-bottom: 15px;"></i>
+                <h3>Aviso de Horario</h3>
+                <p>Normalmente descansamos los Martes y Miércoles, pero por ser Diciembre podríamos estar abiertos.</p>
+                <div class="modal-btn-group" style="flex-direction: column;">
+                    <button class="btn-modal btn-red" onclick="closeScheduleModal()">Sí, voy a pedir</button>
+                    <button class="btn-modal btn-blue" onclick="openVerifyModal()">Verificar si está abierto</button>
+                </div>
             </div>
         </div>
 
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span><i class="fas fa-utensils"></i> Salchipapas</span>
-                <i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="accordion-content">
-                <label>¿Cuántas salchipapas?</label>
-                <input type="number" id="qtySalchipapa" min="0" placeholder="0" oninput="renderDynamicItems('salchipapa')">
-                <div id="salchipapaContainer"></div>
-            </div>
-        </div>
-
-        <hr style="border: 0; border-top: 2px dashed #ccc; margin: 30px 0;">
-
-        <h3><i class="fas fa-motorcycle"></i> Entrega</h3>
-        <select id="deliveryType" onchange="handleDeliveryChange()">
-            <option value="pickup">Recoger en el local</option>
-            <option value="delivery">A Domicilio (Desde $5.000)</option>
-        </select>
-
-        <div id="addressContainer" class="hidden">
-            <div id="gpsSuccessMsg" class="hidden" style="color: var(--accent-green); margin-bottom: 10px; font-weight: bold;">
-                <i class="fas fa-check-circle"></i> Ubicación GPS guardada
-            </div>
-            <label>Dirección exacta:</label>
-            <input type="text" id="addressInput" placeholder="Dirección, Barrio, color de casa...">
-            <input type="hidden" id="gpsCoords">
-        </div>
-
-        <label>Notas adicionales:</label>
-        <textarea id="extraNotes" rows="2" placeholder="Sin salsas, cambio de 50mil, etc..."></textarea>
-
-        <h3><i class="far fa-clock"></i> Horario</h3>
-        <div class="checkbox-wrapper">
-            <input type="checkbox" id="asap" checked onchange="toggleDateInput()">
-            <label for="asap" style="cursor:pointer;">Lo más rápido posible</label>
-        </div>
-        <div id="dateContainer" class="hidden">
-            <label>Fecha y hora:</label>
-            <input type="datetime-local" id="dateInput">
-        </div>
-
-    </div>
-
-    <div class="floating-total">
-        <div class="total-price" id="displayTotal">
-            $0
-            <span>Total estimado</span>
-        </div>
-        <button class="btn-order" onclick="sendToWhatsapp()">
-            Enviar Pedido <i class="fab fa-whatsapp"></i>
-        </button>
-    </div>
-
-    <div class="modal-overlay" id="gpsModal">
-        <div class="modal-box">
-            <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--primary-red); margin-bottom: 15px;"></i>
-            <h3>Ubicación</h3>
-            <p>Necesitamos tu ubicación para el domicilio.</p>
-            <div class="modal-btn-group">
-                <button class="btn-modal btn-gray" onclick="closeGpsModal(false)">Escribir Manual</button>
-                <button class="btn-modal btn-green" onclick="getGPS()">Usar GPS</button>
+        <div class="modal-overlay" id="verifyModal">
+            <div class="modal-box">
+                <i class="fas fa-phone-alt" style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 15px;"></i>
+                <h3>Verificar</h3>
+                <p>Contáctanos para confirmar atención hoy:</p>
+                <div class="modal-btn-group">
+                    <a href="https://wa.me/573123747146" target="_blank" class="btn-modal btn-green" style="text-decoration: none; display:block; text-align:center;">
+                        <i class="fab fa-whatsapp"></i> Escribir
+                    </a>
+                    <a href="tel:3123747146" class="btn-modal btn-blue" style="text-decoration: none; display:block; text-align:center;">
+                        <i class="fas fa-phone"></i> Llamar
+                    </a>
+                </div>
+                <button onclick="document.getElementById('verifyModal').style.display='none'" style="margin-top:15px; background:none; border:none; text-decoration:underline; color:#666;">Cerrar</button>
             </div>
         </div>
-    </div>
 
-    <div class="modal-overlay" id="scheduleModal">
-        <div class="modal-box">
-            <i class="fas fa-calendar-day" style="font-size: 3rem; color: #ffcc00; margin-bottom: 15px;"></i>
-            <h3>Aviso de Horario</h3>
-            <p>Normalmente descansamos los Martes y Miércoles, pero por ser Diciembre podríamos estar abiertos.</p>
-            <div class="modal-btn-group" style="flex-direction: column;">
-                <button class="btn-modal btn-red" onclick="closeScheduleModal()">Sí, voy a pedir</button>
-                <button class="btn-modal btn-blue" onclick="openVerifyModal()">Verificar si está abierto</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="verifyModal">
-        <div class="modal-box">
-            <i class="fas fa-phone-alt" style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 15px;"></i>
-            <h3>Verificar</h3>
-            <p>Contáctanos para confirmar atención hoy:</p>
-            <div class="modal-btn-group">
-                <a href="https://wa.me/573123747146" target="_blank" class="btn-modal btn-green" style="text-decoration: none; display:block; text-align:center;">
-                    <i class="fab fa-whatsapp"></i> Escribir
-                </a>
-                <a href="tel:3123747146" class="btn-modal btn-blue" style="text-decoration: none; display:block; text-align:center;">
-                    <i class="fas fa-phone"></i> Llamar
-                </a>
-            </div>
-            <button onclick="document.getElementById('verifyModal').style.display='none'" style="margin-top:15px; background:none; border:none; text-decoration:underline; color:#666;">Cerrar</button>
-        </div>
-    </div>
 
     <script>
         // --- BASE DE DATOS DE PRECIOS ACTUALIZADA ---
