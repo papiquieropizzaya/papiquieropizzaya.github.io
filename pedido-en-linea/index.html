@@ -220,8 +220,8 @@
             </div>
             <div class="accordion-content">
                 <label>¿Cuántas salchipapas?</label>
-                <input type="number" id="qtySalchi" min="0" placeholder="0" oninput="calculateTotal()">
-                <p style="color: #666; font-size: 0.9em;">Salchipapa Tradicional ($18.000)</p>
+                <input type="number" id="qtySalchipapa" min="0" placeholder="0" oninput="renderDynamicItems('salchipapa')">
+                <div id="salchipapaContainer"></div>
             </div>
         </div>
 
@@ -309,25 +309,40 @@
     </div>
 
     <script>
-        // --- PRECIOS ---
+        // --- BASE DE DATOS DE PRECIOS ACTUALIZADA ---
         const PIZZA_PRICES = {
-            'Margarita': { P: 18000, M: 32000, G: 45000 },
-            'Jamon': { P: 20000, M: 35000, G: 48000 },
-            'Bocadillo': { P: 20000, M: 35000, G: 48000 },
-            'Hawaiana': { P: 22000, M: 38000, G: 50000 },
-            'Peperoni': { P: 22000, M: 38000, G: 50000 },
-            'Pollo Champiñones': { P: 24000, M: 40000, G: 52000 },
-            'Mexicana': { P: 25000, M: 42000, G: 55000 },
-            'Ranchera': { P: 25000, M: 42000, G: 55000 },
-            'Vegetariana': { P: 22000, M: 38000, G: 50000 },
-            '4 Estaciones': { P: 26000, M: 45000, G: 58000 },
-            'La Casa': { P: 26000, M: 45000, G: 58000 }
+            'Margarita': { P: 24000, M: 30000, G: 38000 },
+            'Bocadillo': { P: 24000, M: 32000, G: 38000 },
+            'Jamón': { P: 26000, M: 36000, G: 44000 },
+            'Vegetariana': { P: 26000, M: 36000, G: 44000 },
+            'Hawaiana': { P: 30000, M: 40000, G: 50000 },
+            'Campesina': { P: 30000, M: 40000, G: 50000 },
+            'Peperoni': { P: 30000, M: 40000, G: 50000 },
+            'Mexicana': { P: 30000, M: 40000, G: 50000 },
+            '4 Estaciones': { P: 28000, M: 38000, G: 48000 },
+            'Cerro de la vieja': { P: 29000, M: 40000, G: 50000 },
+            'Mejue': { P: 28000, M: 38000, G: 48000 },
+            'Salami': { P: 28000, M: 38000, G: 48000 },
+            'Children': { P: 28000, M: 40000, G: 50000 },
+            'La casa': { P: 28000, M: 40000, G: 50000 },
+            'Socavon': { P: 28000, M: 38000, G: 48000 },
+            'La colorada': { P: 28000, M: 38000, G: 48000 },
+            'Marinera': { P: 38000, M: 48000, G: 60000 },
+            'Puente rojo': { P: 32000, M: 44000, G: 54000 },
+            'El parche': { P: 30000, M: 40000, G: 50000 },
+            'Ambrosio Alfinger': { P: 28000, M: 38000, G: 48000 },
+            'La Honda': { P: 36000, M: 48000, G: 58000 },
+            'Camarones': { P: 32000, M: 44000, G: 54000 },
+            'Cuatro quesos': { P: 32000, M: 44000, G: 54000 },
+            'Vegana': { P: 24000, M: 32000, G: 40000 },
+            'Trío': { P: 32000, M: 42000, G: 52000 },
         };
 
         const OTHER_PRICES = {
-            burger: { "Clásica": 15000, "Doble Carne": 22000, "Especial": 25000, "Pollo Crispy": 18000, "Mixta": 20000 },
-            dog: { "Sencillo": 10000, "Especial": 15000, "Suizo": 18000 },
-            salchipapa: 18000
+            burger: { "Sencilla": 12000, "Ranchera": 16000, "Americana": 15000, "Mixta": 17000, "Tres Sabores": 24000 },
+            dog: { "Sencillo": 7000, "Sencillo + Jamón": 8000, "Perro pio pio": 16000 },
+            // NOTA: Precios estimados para los 3 tamaños de Salchipapa. Ajustar si es necesario.
+            salchipapa: { "Pequeña": 15000, "Mediana": 28000, "Grande": 40000 }
         };
 
         const DELIVERY_FEE = 5000;
@@ -437,12 +452,13 @@
             renderFlavorSelects(numSelect);
         }
 
-        // --- HAMBURGUESAS Y PERROS ---
+        // --- HAMBURGUESAS, PERROS Y SALCHIPAPAS ---
         function renderDynamicItems(type) {
-            const qtyId = type === 'burger' ? 'qtyBurgers' : 'qtyDogs';
-            const containerId = type === 'burger' ? 'burgerContainer' : 'dogContainer';
-            const menuData = type === 'burger' ? OTHER_PRICES.burger : OTHER_PRICES.dog;
-            const icon = type === 'burger' ? '🍔' : '🌭';
+            const qtyId = type === 'burger' ? 'qtyBurgers' : (type === 'dog' ? 'qtyDogs' : 'qtySalchipapa');
+            const containerId = type === 'burger' ? 'burgerContainer' : (type === 'dog' ? 'dogContainer' : 'salchipapaContainer');
+            const menuData = OTHER_PRICES[type];
+            const icon = type === 'burger' ? '🍔' : (type === 'dog' ? '🌭' : '🍟');
+            const labelTitle = type === 'burger' ? 'Hamburguesa' : (type === 'dog' ? 'Perro' : 'Salchipapa');
 
             const qty = parseInt(document.getElementById(qtyId).value) || 0;
             const container = document.getElementById(containerId);
@@ -451,11 +467,11 @@
             for (let i = 0; i < qty; i++) {
                 const div = document.createElement('div');
                 div.className = 'dynamic-item';
-                let opts = `<option value="" data-price="0">Selecciona tipo...</option>`;
+                let opts = `<option value="" data-price="0">Selecciona...</option>`;
                 for (const [name, price] of Object.entries(menuData)) {
                     opts += `<option value="${name}" data-price="${price}">${name} ($${price.toLocaleString()})</option>`;
                 }
-                div.innerHTML = `<label>${icon} ${type === 'burger' ? 'Hamburguesa' : 'Perro'} #${i+1}</label>
+                div.innerHTML = `<label>${icon} ${labelTitle} #${i+1}</label>
                                  <select class="item-select" data-type="${type}" onchange="calculateTotal()">${opts}</select>`;
                 container.appendChild(div);
             }
@@ -468,7 +484,7 @@
             if(content && content.classList.contains('open')) content.style.maxHeight = "none";
         }
 
-        // --- CÁLCULO TOTAL (LÓGICA ACTUALIZADA) ---
+        // --- CÁLCULO TOTAL ---
         function calculateTotal() {
             let total = 0;
 
@@ -498,19 +514,14 @@
                 }
             });
 
-            // 2. Hamburguesas y Perros
+            // 2. Hamburguesas, Perros y Salchipapas
             document.querySelectorAll('.item-select').forEach(sel => {
                 total += parseInt(sel.options[sel.selectedIndex]?.dataset.price) || 0;
             });
 
-            // 3. Salchipapas
-            const qtySalchi = parseInt(document.getElementById('qtySalchi').value) || 0;
-            total += (qtySalchi * OTHER_PRICES.salchipapa);
-
-            // 4. Domicilio
+            // 3. Domicilio
             if (document.getElementById('deliveryType').value === 'delivery') total += DELIVERY_FEE;
 
-            // Mostrar entero (Math.round para evitar decimales en el promedio)
             document.getElementById('displayTotal').innerHTML = `$${Math.round(total).toLocaleString('es-CO')} <span>Total estimado</span>`;
         }
 
@@ -577,16 +588,17 @@
                 }
             });
 
-            // Otros
+            // Otros (Burgers, Dogs, Salchi)
             document.querySelectorAll('.item-select').forEach(sel => {
                 if(sel.value) {
-                    const type = sel.dataset.type === 'burger' ? '🍔' : '🌭';
-                    msg += `${type} ${sel.value}\n`;
+                    let typeIcon = '🍔';
+                    if(sel.dataset.type === 'dog') typeIcon = '🌭';
+                    if(sel.dataset.type === 'salchipapa') typeIcon = '🍟';
+                    
+                    msg += `${typeIcon} ${sel.value}\n`;
                     hasItems = true;
                 }
             });
-            const salchi = document.getElementById('qtySalchi').value;
-            if(salchi > 0) { msg += `🍟 ${salchi}x Salchipapa Tradicional\n`; hasItems = true; }
 
             if(!hasItems) { alert("Pedido vacío"); return; }
 
