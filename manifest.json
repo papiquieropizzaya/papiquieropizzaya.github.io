@@ -1,0 +1,15 @@
+{
+  "name": "Papi Quiero Pizza Ya",
+  "short_name": "PapiPizza",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff0000",
+  "icons": [
+    {
+      "src": "/Icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
