@@ -324,10 +324,22 @@
 
     <script src="script.js"></script>
 
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+
+
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
+
+    // REGISTRO SW (OBLIGATORIO EN V16 EN GITHUB PAGES)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/OneSignalSDKWorker.js')
+        .then(() => console.log("SW Principal registrado"))
+        .catch(err => console.error("Error SW Principal:", err));
+
+      navigator.serviceWorker.register('/OneSignalSDKUpdaterWorker.js')
+        .then(() => console.log("SW Updater registrado"))
+        .catch(err => console.error("Error SW Updater:", err));
+    }
 
     await OneSignal.init({
       appId: "220ac015-3d20-4b8c-b352-6ee04244710c",
@@ -336,20 +348,17 @@
 
     const bell = document.getElementById("notifyBell");
 
-    // Si ya tiene permisos, esconder
     const perm = await OneSignal.Notifications.permission;
-    if (perm === "granted") {
-      bell.style.display = "none";
-    }
+    if (perm === "granted") bell.style.display = "none";
 
     bell.addEventListener("click", async () => {
-
-      // Animación
       bell.classList.add("bell-ring");
       setTimeout(() => bell.classList.remove("bell-ring"), 600);
 
-      // **ESTA ES LA LLAMADA CORRECTA PARA MÓVIL**
-      await OneSignal.Slidedown.promptPush();
+      const userId = "user-" + Math.random().toString(36).slice(2);
+      await OneSignal.login(userId);
+
+      await OneSignal.User.PushSubscription.optIn();
 
       const newPerm = await OneSignal.Notifications.permission;
       if (newPerm === "granted") {
@@ -359,6 +368,8 @@
     });
   });
 </script>
+
+
 
 
 
