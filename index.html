@@ -336,27 +336,30 @@
 
     const bell = document.getElementById("notifyBell");
 
-    // Ocultar si ya tiene permisos
+    // Si ya tiene permisos, esconder
     const perm = await OneSignal.Notifications.permission;
     if (perm === "granted") {
       bell.style.display = "none";
     }
 
     bell.addEventListener("click", async () => {
-      bell.classList.add("bell-ring");
 
+      // Animación
+      bell.classList.add("bell-ring");
       setTimeout(() => bell.classList.remove("bell-ring"), 600);
 
-      await OneSignal.Notifications.requestPermission();
+      // **ESTA ES LA LLAMADA CORRECTA PARA MÓVIL**
+      await OneSignal.Slidedown.promptPush();
 
-      const permNow = await OneSignal.Notifications.permission;
-      if (permNow === "granted") {
+      const newPerm = await OneSignal.Notifications.permission;
+      if (newPerm === "granted") {
         bell.style.opacity = 0;
         setTimeout(() => bell.style.display = "none", 300);
       }
     });
   });
 </script>
+
 
 
 </body>
