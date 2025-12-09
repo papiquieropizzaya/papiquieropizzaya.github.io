@@ -16,6 +16,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        .notify-bell {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            font-size: 38px;
+            background: #ffcc00;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 99999;
+            transition: transform .2s ease, opacity .3s ease;
+            animation: float 2s infinite ease-in-out;
+        }
+
+        .notify-bell:focus {
+            outline: 3px solid #fff;
+            outline-offset: 3px;
+        }
+
+        /* Flotación */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Campanazo */
+        @keyframes ring {
+            0% { transform: rotate(0); }
+            20% { transform: rotate(18deg); }
+            40% { transform: rotate(-18deg); }
+            60% { transform: rotate(10deg); }
+            80% { transform: rotate(-10deg); }
+            100% { transform: rotate(0); }
+        }
+
+        .bell-ring {
+            animation: ring 0.5s ease;
+        }
+    </style>
+
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9448273062479555" crossorigin="anonymous"></script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
@@ -273,31 +318,30 @@
 
     </div>
     
-    <div id="notifyBell" class="notify-bell">
+    <button id="notifyBell" class="notify-bell" aria-label="Activar notificaciones">
     🔔
-    </div>
+    </button>
 
     <script src="script.js"></script>
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
 
     await OneSignal.init({
-      appId: "TU-APP-ID-AQUI",  // <<<<<< PON AQUÍ TU ID
-      notifyButton: { enable: false } // Ocultamos el feo botón de OneSignal
+      appId: "220ac015-3d20-4b8c-b352-6ee04244710c",
+      notifyButton: { enable: false }
     });
 
     const bell = document.getElementById("notifyBell");
 
-    // 1. Ocultar si ya tiene permisos
-    const currentPerm = await OneSignal.Notifications.permission;
-    if (currentPerm === "granted") {
+    // Ocultar si ya tiene permisos
+    const perm = await OneSignal.Notifications.permission;
+    if (perm === "granted") {
       bell.style.display = "none";
     }
 
-    // 2. Evento click campanazo + solicitud permiso
     bell.addEventListener("click", async () => {
       bell.classList.add("bell-ring");
 
@@ -313,6 +357,7 @@
     });
   });
 </script>
+
 
 </body>
 
