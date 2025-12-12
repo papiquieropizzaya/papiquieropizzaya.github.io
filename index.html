@@ -16,69 +16,74 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <style>
-        .notify-bell {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            font-size: 38px;
-            background: #ffcc00;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 50%;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-            cursor: pointer;
-            z-index: 99999;
-            transition: transform .2s ease, opacity .3s ease;
-            animation: float 2s infinite ease-in-out;
-        }
-
-        .notify-bell:focus {
-            outline: 3px solid #fff;
-            outline-offset: 3px;
-        }
-
-        /* Flotación */
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0); }
-        }
-
-        /* Campanazo */
-        @keyframes ring {
-            0% { transform: rotate(0); }
-            20% { transform: rotate(18deg); }
-            40% { transform: rotate(-18deg); }
-            60% { transform: rotate(10deg); }
-            80% { transform: rotate(-10deg); }
-            100% { transform: rotate(0); }
-        }
-
-        .bell-ring {
-            animation: ring 0.5s ease;
-        }
-    </style>
-
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9448273062479555" crossorigin="anonymous"></script>
-    <meta http-equiv="origin-trial" content="">
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <style>
+  /* Botón flotante */
+  #custom-bell-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #e54b4d; /* Rojo OneSignal */
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 9999;
+    display: none; /* Oculto al inicio */
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+  }
 
-    <script>
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-        await OneSignal.init({
-        appId: "220ac015-3d20-4b8c-b352-6ee04244710c",
-        safari_web_id: "web.onesignal.auto.48cecb45-b9e1-42c4-afaa-e45f7f034833",
-        notifyButton: {
-            enable: false,
-        },
-        });
-    });
-    </script>
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#ff0000">
+  #custom-bell-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+  }
+
+  #custom-bell-btn:hover {
+    transform: scale(1.1);
+    background-color: #d13b3d;
+  }
+
+  /* Animación: Sonar */
+  @keyframes ring-animation {
+    0% { transform: rotate(0); }
+    10% { transform: rotate(30deg); }
+    30% { transform: rotate(-28deg); }
+    50% { transform: rotate(34deg); }
+    70% { transform: rotate(-32deg); }
+    90% { transform: rotate(30deg); }
+    100% { transform: rotate(0); }
+  }
+  .is-ringing {
+    animation: ring-animation 0.5s ease-in-out;
+  }
+
+  /* Animación: Desaparecer */
+  @keyframes vanish-animation {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0); }
+  }
+  .is-vanished {
+    animation: vanish-animation 0.6s forwards;
+    pointer-events: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    #custom-bell-btn {
+      width: 50px;
+      height: 50px;
+      bottom: 15px;
+      right: 15px;
+    }
+    #custom-bell-btn svg { width: 24px; height: 24px; }
+  }
+</style>
 
 </head>
 <body>
@@ -319,62 +324,121 @@
         </footer>
 
     </div>
-    
-    <button id="notifyBell" class="notify-bell" aria-label="Activar notificaciones">
-    🔔
+
+    <button id="custom-bell-btn" aria-label="Activar notificaciones">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+        </svg>
     </button>
+    
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        
+        const bellBtn = document.getElementById('custom-bell-btn');
+
+        OneSignal.push(function() {
+            // 1. Inicialización
+            OneSignal.init({
+            appId: "TU-APP-ID-AQUI", // <--- PÓN TU ID AQUÍ
+            notifyButton: {
+                enable: false, // IMPORTANTE: Esto oculta el botón por defecto de OneSignal
+            },
+            allowLocalhostAsSecureOrigin: true, // Útil para pruebas
+            });
+
+            // 2. Verificar estado actual al cargar la página
+            OneSignal.getNotificationPermission(function(permission) {
+            console.log("Estado actual:", permission);
+            // Si el usuario NO ha dado permiso y NO lo ha bloqueado, mostramos el botón
+            if (permission === "default") {
+                bellBtn.style.display = "flex";
+            }
+            // Si ya está "granted" (permitido), el botón se queda oculto (display: none).
+            });
+
+            // 3. Escuchar cambios de suscripción (Si el usuario acepta)
+            OneSignal.on('subscriptionChange', function (isSubscribed) {
+            if (isSubscribed) {
+                // Si se suscribe con éxito, hacemos la animación de desaparición
+                bellBtn.classList.add('is-vanished');
+            }
+            });
+        });
+
+        // 4. Lógica del Botón Personalizado
+        bellBtn.addEventListener('click', function() {
+            // A. Activar animación de "sonar"
+            bellBtn.classList.add('is-ringing');
+
+            // Quitamos la clase de animación después de que termine para poder repetirla si cancelan
+            setTimeout(() => {
+                bellBtn.classList.remove('is-ringing');
+            }, 500);
+
+            // B. Pedir permiso a OneSignal
+            window.OneSignal.push(function() {
+            // Muestra el prompt nativo o el slide prompt según configuración
+            OneSignal.showSlidedownPrompt(); 
+            // Alternativa si el slidedown no está configurado: 
+            // OneSignal.registerForPushNotifications();
+            });
+        });
+    </script>
 
     <script src="script.js"></script>
 
-
-
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
+  
   OneSignalDeferred.push(async function(OneSignal) {
-
-    // REGISTRO SW (OBLIGATORIO EN V16 EN GITHUB PAGES)
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/OneSignalSDKWorker.js')
-        .then(() => console.log("SW Principal registrado"))
-        .catch(err => console.error("Error SW Principal:", err));
-
-      navigator.serviceWorker.register('/OneSignalSDKUpdaterWorker.js')
-        .then(() => console.log("SW Updater registrado"))
-        .catch(err => console.error("Error SW Updater:", err));
-    }
-
+    // A. INICIALIZACIÓN CON TUS DATOS
     await OneSignal.init({
       appId: "220ac015-3d20-4b8c-b352-6ee04244710c",
-      notifyButton: { enable: false }
+      safari_web_id: "web.onesignal.auto.48cecb45-b9e1-42c4-afaa-e45f7f034833",
+      notifyButton: {
+        enable: false, // IMPORTANTE: Ponemos false para usar nuestro propio botón
+      },
     });
 
-    const bell = document.getElementById("notifyBell");
+    // B. LÓGICA DEL BOTÓN PROPIO
+    const bellBtn = document.getElementById('custom-bell-btn');
 
-    const perm = await OneSignal.Notifications.permission;
-    if (perm === "granted") bell.style.display = "none";
-
-    bell.addEventListener("click", async () => {
-      bell.classList.add("bell-ring");
-      setTimeout(() => bell.classList.remove("bell-ring"), 600);
-
-      const userId = "user-" + Math.random().toString(36).slice(2);
-      await OneSignal.login(userId);
-
-      await OneSignal.User.PushSubscription.optIn();
-
-      const newPerm = await OneSignal.Notifications.permission;
-      if (newPerm === "granted") {
-        bell.style.opacity = 0;
-        setTimeout(() => bell.style.display = "none", 300);
+    // Función para decidir si mostrar el botón
+    function checkSubscriptionState() {
+      // Si ya está suscrito (optedIn es true), no mostramos nada
+      if (OneSignal.User.PushSubscription.optedIn) {
+        bellBtn.style.display = 'none';
+      } 
+      // Si no está suscrito y el navegador permite preguntar, mostramos el botón
+      else if (Notification.permission !== 'denied') {
+        bellBtn.style.display = 'flex';
       }
+    }
+
+    // Comprobamos el estado al cargar
+    checkSubscriptionState();
+
+    // Escuchamos si el usuario cambia de opinión (se suscribe)
+    OneSignal.User.PushSubscription.addEventListener("change", function(event) {
+      if (event.current.optedIn) {
+        // Si se activa, animamos la desaparición
+        bellBtn.classList.add('is-vanished');
+      }
+    });
+
+    // C. EVENTO CLICK EN EL BOTÓN
+    bellBtn.addEventListener('click', async function() {
+      // 1. Animación visual
+      bellBtn.classList.add('is-ringing');
+      setTimeout(() => bellBtn.classList.remove('is-ringing'), 500);
+
+      // 2. Pedir permiso a OneSignal
+      await OneSignal.Notifications.requestPermission();
     });
   });
 </script>
-
-
-
-
-
 </body>
 
 </html>
