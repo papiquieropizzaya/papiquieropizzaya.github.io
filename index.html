@@ -7,7 +7,7 @@
     <meta name="description" content="Hola, Pizzas En Leña Con Borde Relleno De Queso, Son Unicas, Son Diferentes" />
     <meta name="robots" content="index,follow" />
     <meta name="author" content="Abel Nicolás Jaimes Orjuela" />
-    <meta name="keywords" content="papiquieropizzaya, Papi Quiero Pizza Ya, Papi quiero pizza ya, papi quiero pizza, Papi quiero pizza, Papi Quiero Pizza, Chinácota, chinácota, Chinacota, chinacota, Pizza Chinácota, Pizza chinácota, Pizza Chinacota, Pizza chinacota, pizza Chinácota, pizza chinácota, pizza Chinacota, pizza chinacota" />
+    <meta name="keywords" content="papiquieropizzaya, Papi Quiero Pizza Ya, Pizza Chinácota" />
     <meta name="google-site-verification" content="WfiA4hGyjafIAhHt9pbjUjHsb3ArnhuDPosnt4M6rSk" />
     <meta name="google-site-verification" content="HrH1EZzarEX74zAlEJfuaUTCc2pXb61NcfePXgdp_3U" />
     <link rel="stylesheet" href="style.css">
@@ -15,76 +15,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9448273062479555" crossorigin="anonymous"></script>
+    
     <style>
-  /* Botón flotante */
-  #custom-bell-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: #e54b4d; /* Rojo OneSignal */
-    color: white;
-    border-radius: 50%;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    cursor: pointer;
-    z-index: 9999;
-    display: none; /* Oculto al inicio */
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s;
-  }
-
-  #custom-bell-btn svg {
-    width: 30px;
-    height: 30px;
-    fill: currentColor;
-  }
-
-  #custom-bell-btn:hover {
-    transform: scale(1.1);
-    background-color: #d13b3d;
-  }
-
-  /* Animación: Sonar */
-  @keyframes ring-animation {
-    0% { transform: rotate(0); }
-    10% { transform: rotate(30deg); }
-    30% { transform: rotate(-28deg); }
-    50% { transform: rotate(34deg); }
-    70% { transform: rotate(-32deg); }
-    90% { transform: rotate(30deg); }
-    100% { transform: rotate(0); }
-  }
-  .is-ringing {
-    animation: ring-animation 0.5s ease-in-out;
-  }
-
-  /* Animación: Desaparecer */
-  @keyframes vanish-animation {
-    0% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(0); }
-  }
-  .is-vanished {
-    animation: vanish-animation 0.6s forwards;
-    pointer-events: none;
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    #custom-bell-btn {
-      width: 50px;
-      height: 50px;
-      bottom: 15px;
-      right: 15px;
-    }
-    #custom-bell-btn svg { width: 24px; height: 24px; }
-  }
-</style>
-
+      /* --- ESTILOS DEL BOTÓN DE NOTIFICACIONES --- */
+      #custom-bell-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #e54b4d;
+        color: white;
+        border-radius: 50%;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        cursor: pointer;
+        z-index: 99999; /* Z-index alto para estar sobre todo */
+        display: none; /* Se mantiene oculto hasta que JS verifique suscripción */
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+    
+      #custom-bell-btn svg { width: 30px; height: 30px; fill: currentColor; }
+      #custom-bell-btn:hover { transform: scale(1.1); background-color: #d13b3d; }
+    
+      @keyframes ring-animation {
+        0% { transform: rotate(0); } 10% { transform: rotate(30deg); } 30% { transform: rotate(-28deg); }
+        50% { transform: rotate(34deg); } 70% { transform: rotate(-32deg); } 90% { transform: rotate(30deg); } 100% { transform: rotate(0); }
+      }
+      .is-ringing { animation: ring-animation 0.5s ease-in-out; }
+    
+      @keyframes vanish-animation {
+        0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0); }
+      }
+      .is-vanished { animation: vanish-animation 0.6s forwards; pointer-events: none; }
+    
+      @media (max-width: 600px) {
+        #custom-bell-btn { width: 50px; height: 50px; bottom: 15px; right: 15px; }
+        #custom-bell-btn svg { width: 24px; height: 24px; }
+      }
+    </style>
 </head>
 <body>
 
@@ -95,9 +68,7 @@
         <p id="connection-warning" style="display: none;">Verifica tu conexión a internet...</p>
     </div>
 
-
     <div id="content" style="display: none;">
-
         <header>
             <nav class="container">
                 <a href="#hero" class="logo">Papi Quiero Pizza Ya</a>
@@ -105,7 +76,6 @@
                     <li><a href="#hero">Inicio</a></li>
                     <li><a href="#menu">Menú</a></li>
                     <li><a href="/pedidos-en-linea"></a></li>
-                    <!-- <li><a href="#promociones">Promociones</a></li> -->
                     <li><a href="#nosotros">Nosotros</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -130,53 +100,24 @@
                         </div>
                     </div>
                 </div>
-                <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+                <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
+                <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
             </section>
-
-            <!--<section id="promociones" class="container section">
-                <h2>Promociones Especiales</h2>
-                <div class="promo-grid">
-                    <div class="promo-item">
-                        <a href="/prom/" target="_blank" style="text-decoration: none; color: black;" rel="noopener noreferrer"><img src="./prom/img/pizzaburguer.jpeg" style="height: 300px;" alt="Promoción 1">
-                        <h3>PizzaBurguer</h3>
-                        <p>Un nuevo producto, una hamburguesa con ingredientes de pizza</p>
-                        <p class="price">$25.000</p></a>
-                    </div>
-                    <div class="promo-item">
-                        <img src="https://via.placeholder.com/400x300/FFC300/000000?text=Promo+2" alt="Promoción 2">
-                        <h3>Pizza del Día</h3>
-                        <p>Nuestra especialidad con descuento.</p>
-                        <p class="price">$XX.XXX</p>
-                    </div>
-                    <div class="promo-item">
-                        <img src="https://via.placeholder.com/400x300/FFC300/000000?text=Promo+3" alt="Promoción 3">
-                        <h3>Domingo Llanero</h3>
-                        <p>2x1 en pizzas seleccionadas.</p>
-                        <p class="price">$XX.XXX</p>
-                    </div>
-                </div>
-            </section>--> 
 
             <section id="menu" class="container section">
                 <h2>Nuestro Menú</h2>
                 <p class="menu-intro">Todas nuestras pizzas son preparadas en horno de leña y vienen con un delicioso borde de queso. Además acabamos de incorporar comída rápidas.</p>
-                <div class="menu-container" id="menu" style="margin-bottom: 200px;">
+                <div class="menu-container" style="margin-bottom: 200px;">
                     <div class="image-grid">
                         <div class="image-wrapper" data-index="0">
                             <a href="/menu-fastfood/" target="_blank" rel="noopener noreferrer"><img src="burger.jpg" alt="Imagen" class="menu-image"></a>
-                            <div class="menu-content menu-left">
-
-                            </div>
                         </div>
                         <div class="image-wrapper" data-index="1">
                             <a href="/menu-pizza/" target="_blank" rel="noopener noreferrer"><img src="pizza.png" alt="Imagen" class="menu-image"></a>
-                            <div class="menu-content menu-center">
-                                
-                            </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="menu-category">
                     <h3>Pizzas más populares</h3>
                     <div class="menu-grid">
@@ -211,25 +152,25 @@
                     <h3>Hamburguesa</h3>
                     <div class="menu-grid">
                         <div class="menu-item">
-                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Hamburguesa Ranchera">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Hamburguesa" alt="Hamburguesa Sencilla">
                             <h4>Sencilla</h4>
                             <p>Pan brioche, salsa de la casa, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne o pollo, queso cheddar, jamón.</p>
                             <p class="price">$12.000</p>
                         </div>
                         <div class="menu-item">
-                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Hamburguesa Americana">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Hamburguesa" alt="Hamburguesa Ranchera">
                             <h4>Ranchera</h4>
                             <p>Pan brioche, salsa de la casa, salsa miel mostaza, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, queso cheddar, jamón chorizo y tocineta. + Papa a la Francesa.</p>
                             <p class="price">$16.000</p>
                         </div>
                         <div class="menu-item">
-                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Hamburguesa Urbana">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Hamburguesa" alt="Hamburguesa Americana">
                             <h4>Americana</h4>
                             <p>Pan brioche, salsa de la casa, papas fósforos,  cebolla caramelizada, rodajas de pepinillos croqueta de carne, queso cheddar, jamón, tocineta. + Papa a la Francesa.</p>
                             <p class="price">$15.000</p>
                         </div>
                         <div class="menu-item">
-                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Vegetariana" alt="Hamburguesa Tres sabores">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Hamburguesa" alt="Hamburguesa Mixta">
                             <h4>Mixta</h4>
                             <p>Pan brioche, salsa de la casa, papas fósforos, lechuga, tomate, cebolla caramelizada, croqueta de carne, pollo, aderezo de la casa, tocineta, queso cheddar, jamón. + Papa a la Francesa.</p>
                             <p class="price">$17.000</p>
@@ -241,19 +182,19 @@
                     <h3>Perros Calientes</h3>
                     <div class="menu-grid">
                         <div class="menu-item">
-                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Clasica" alt="Perros Calientes Venezolano">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Perro" alt="Perro Sencillo">
                             <h4>Sencillo</h4>
                             <p>Pan, salchicha, papa fosforito, queso, salsas.</p>
                             <p class="price">$7.000</p>
                         </div>
                         <div class="menu-item">
-                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Pollo" alt="Perros Calientes Perripollo">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Perro" alt="Perro con jamon">
                             <h4>Sencillo + Jamón</h4>
                             <p>Pan, salchicha, papa fosforito, queso, jamón salsas.</p>
                             <p class="price">$8.000</p>
                         </div>
                         <div class="menu-item">
-                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Pizza+Hawaiana" alt="Perros Calientes Americano">
+                            <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Perro" alt="Perro Pio Pio">
                             <h4>Perro pio pio</h4>
                             <p>Pan, salchicha americana, papa fosforito, pollo, queso cheddar, maíz, tocineta y salsas de la casa.</p>
                             <p class="price">$16.000</p>
@@ -300,9 +241,7 @@
                 </div>
                 <div id="productsModal" class="modal">
                     <div class="modal-content">
-                        <span class="close">
-                            
-                        </span>
+                        <span class="close"></span>
                         <a href="https://wa.me/+573123747146"><strong>WhatsApp</strong></a>
                         <a href="tel:3123747146"><strong>Llamar</strong></a>
                     </div>
@@ -310,19 +249,15 @@
                 <div class="map-placeholder" style="margin-top: 20px; text-align:center;">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.6773412726964!2d-72.60039247417065!3d7.6065724791568785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6631463a0b0c07%3A0x27776117f6c64119!2sPapi%20quiero%20pizza%20ya!5e0!3m2!1ses-419!2sco!4v1696085969190!5m2!1ses-419!2sco" width="100%" height="450px" style="border:7px; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <!--<div>
-                    <video src="./vid-location.mp4" controls class="vid-location"></video>
-                </div>-->
             </section>
         </main>
 
         <footer>
             <div class="container">
-                <p>&copy; 2024 Papi Quiero Pizza Ya. Todos los derechos reservados. Chinácota, Colombia.</p>
-                <p>Made By <<a href="https://codematehub.com" target="_blank" rel="noopener noreferrer">CodemateHub</a>></p>
+                <p>© 2024 Papi Quiero Pizza Ya. Todos los derechos reservados. Chinácota, Colombia.</p>
+                <p>Made By <a href="https://codematehub.com" target="_blank" rel="noopener noreferrer">CodemateHub</a></p>
                 </div>
         </footer>
-
     </div>
 
     <button id="custom-bell-btn" aria-label="Activar notificaciones">
@@ -331,114 +266,58 @@
         </svg>
     </button>
     
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        window.OneSignal = window.OneSignal || [];
-        
-        const bellBtn = document.getElementById('custom-bell-btn');
-
-        OneSignal.push(function() {
-            // 1. Inicialización
-            OneSignal.init({
-            appId: "TU-APP-ID-AQUI", // <--- PÓN TU ID AQUÍ
-            notifyButton: {
-                enable: false, // IMPORTANTE: Esto oculta el botón por defecto de OneSignal
-            },
-            allowLocalhostAsSecureOrigin: true, // Útil para pruebas
-            });
-
-            // 2. Verificar estado actual al cargar la página
-            OneSignal.getNotificationPermission(function(permission) {
-            console.log("Estado actual:", permission);
-            // Si el usuario NO ha dado permiso y NO lo ha bloqueado, mostramos el botón
-            if (permission === "default") {
-                bellBtn.style.display = "flex";
-            }
-            // Si ya está "granted" (permitido), el botón se queda oculto (display: none).
-            });
-
-            // 3. Escuchar cambios de suscripción (Si el usuario acepta)
-            OneSignal.on('subscriptionChange', function (isSubscribed) {
-            if (isSubscribed) {
-                // Si se suscribe con éxito, hacemos la animación de desaparición
-                bellBtn.classList.add('is-vanished');
-            }
-            });
-        });
-
-        // 4. Lógica del Botón Personalizado
-        bellBtn.addEventListener('click', function() {
-            // A. Activar animación de "sonar"
-            bellBtn.classList.add('is-ringing');
-
-            // Quitamos la clase de animación después de que termine para poder repetirla si cancelan
-            setTimeout(() => {
-                bellBtn.classList.remove('is-ringing');
-            }, 500);
-
-            // B. Pedir permiso a OneSignal
-            window.OneSignal.push(function() {
-            // Muestra el prompt nativo o el slide prompt según configuración
-            OneSignal.showSlidedownPrompt(); 
-            // Alternativa si el slidedown no está configurado: 
-            // OneSignal.registerForPushNotifications();
-            });
-        });
-    </script>
-
     <script src="script.js"></script>
 
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  
-  OneSignalDeferred.push(async function(OneSignal) {
-    // A. INICIALIZACIÓN CON TUS DATOS
-    await OneSignal.init({
-      appId: "220ac015-3d20-4b8c-b352-6ee04244710c",
-      safari_web_id: "web.onesignal.auto.48cecb45-b9e1-42c4-afaa-e45f7f034833",
-      notifyButton: {
-        enable: false, // IMPORTANTE: Ponemos false para usar nuestro propio botón
-      },
-    });
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      
+      OneSignalDeferred.push(async function(OneSignal) {
+        // A. INICIALIZACIÓN
+        await OneSignal.init({
+          appId: "220ac015-3d20-4b8c-b352-6ee04244710c",
+          safari_web_id: "web.onesignal.auto.48cecb45-b9e1-42c4-afaa-e45f7f034833",
+          notifyButton: {
+            enable: false, // Ocultamos el botón nativo para usar el nuestro
+          },
+        });
+    
+        // B. LOGICA DEL BOTÓN PROPIO
+        const bellBtn = document.getElementById('custom-bell-btn');
+    
+        // Función para decidir si mostrar el botón
+        function checkSubscriptionState() {
+          // Si ya está suscrito, ocultar botón
+          if (OneSignal.User.PushSubscription.optedIn) {
+            bellBtn.style.display = 'none';
+          } 
+          // Si no está suscrito y no ha bloqueado, mostrar botón
+          else if (Notification.permission !== 'denied') {
+            bellBtn.style.display = 'flex';
+          }
+        }
+    
+        // Verificar al cargar
+        checkSubscriptionState();
+    
+        // Escuchar cambios de suscripción
+        OneSignal.User.PushSubscription.addEventListener("change", function(event) {
+          if (event.current.optedIn) {
+            bellBtn.classList.add('is-vanished'); // Animar salida si se suscribe
+          }
+        });
+    
+        // Click en el botón
+        bellBtn.addEventListener('click', async function() {
+          // Animación visual
+          bellBtn.classList.add('is-ringing');
+          setTimeout(() => bellBtn.classList.remove('is-ringing'), 500);
+    
+          // Pedir permiso
+          await OneSignal.Notifications.requestPermission();
+        });
+      });
+    </script>
 
-    // B. LÓGICA DEL BOTÓN PROPIO
-    const bellBtn = document.getElementById('custom-bell-btn');
-
-    // Función para decidir si mostrar el botón
-    function checkSubscriptionState() {
-      // Si ya está suscrito (optedIn es true), no mostramos nada
-      if (OneSignal.User.PushSubscription.optedIn) {
-        bellBtn.style.display = 'none';
-      } 
-      // Si no está suscrito y el navegador permite preguntar, mostramos el botón
-      else if (Notification.permission !== 'denied') {
-        bellBtn.style.display = 'flex';
-      }
-    }
-
-    // Comprobamos el estado al cargar
-    checkSubscriptionState();
-
-    // Escuchamos si el usuario cambia de opinión (se suscribe)
-    OneSignal.User.PushSubscription.addEventListener("change", function(event) {
-      if (event.current.optedIn) {
-        // Si se activa, animamos la desaparición
-        bellBtn.classList.add('is-vanished');
-      }
-    });
-
-    // C. EVENTO CLICK EN EL BOTÓN
-    bellBtn.addEventListener('click', async function() {
-      // 1. Animación visual
-      bellBtn.classList.add('is-ringing');
-      setTimeout(() => bellBtn.classList.remove('is-ringing'), 500);
-
-      // 2. Pedir permiso a OneSignal
-      await OneSignal.Notifications.requestPermission();
-    });
-  });
-</script>
 </body>
-
 </html>
