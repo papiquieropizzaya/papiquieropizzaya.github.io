@@ -606,3 +606,150 @@ footer a:hover {
     }
 }
 
+
+
+/* --- AGREGAR AL FINAL DE style.css --- */
+
+/* Estilos del Botón Flotante de Notificaciones */
+#custom-bell-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #e54b4d;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    /* Tu loader tiene 9999, así que ponemos esto mucho más alto */
+    z-index: 2147483647; 
+    
+    /* IMPORTANTE: Lo ponemos en flex para que lo veas SI o SI. 
+       El script lo ocultará luego si ya estás suscrito */
+    display: flex;       
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+#custom-bell-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+}
+
+#custom-bell-btn:hover {
+    transform: scale(1.1);
+    background-color: #d13b3d;
+}
+
+/* Animaciones del botón */
+@keyframes ring-animation {
+    0% { transform: rotate(0); }
+    10% { transform: rotate(30deg); }
+    30% { transform: rotate(-28deg); }
+    50% { transform: rotate(34deg); }
+    70% { transform: rotate(-32deg); }
+    90% { transform: rotate(30deg); }
+    100% { transform: rotate(0); }
+}
+.is-ringing {
+    animation: ring-animation 0.5s ease-in-out;
+}
+
+@keyframes vanish-animation {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0); }
+}
+.is-vanished {
+    animation: vanish-animation 0.6s forwards;
+    pointer-events: none;
+}
+
+/* Responsive para el botón */
+@media (max-width: 600px) {
+    #custom-bell-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+    #custom-bell-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+}/* --- AGREGAR AL FINAL DE style.css --- */
+
+/* Estilos del Botón Flotante de Notificaciones */
+#custom-bell-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #e54b4d;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    /* Tu loader tiene 9999, así que ponemos esto mucho más alto */
+    z-index: 2147483647; 
+    
+    /* IMPORTANTE: Lo ponemos en flex para que lo veas SI o SI. 
+       El script lo ocultará luego si ya estás suscrito */
+    display: flex;       
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+#custom-bell-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+}
+
+#custom-bell-btn:hover {
+    transform: scale(1.1);
+    background-color: #d13b3d;
+}
+
+/* Animaciones del botón */
+@keyframes ring-animation {
+    0% { transform: rotate(0); }
+    10% { transform: rotate(30deg); }
+    30% { transform: rotate(-28deg); }
+    50% { transform: rotate(34deg); }
+    70% { transform: rotate(-32deg); }
+    90% { transform: rotate(30deg); }
+    100% { transform: rotate(0); }
+}
+.is-ringing {
+    animation: ring-animation 0.5s ease-in-out;
+}
+
+@keyframes vanish-animation {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0); }
+}
+.is-vanished {
+    animation: vanish-animation 0.6s forwards;
+    pointer-events: none;
+}
+
+/* Responsive para el botón */
+@media (max-width: 600px) {
+    #custom-bell-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+    #custom-bell-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+}
