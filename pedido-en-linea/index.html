@@ -249,12 +249,17 @@
 
             <hr style="border: 0; border-top: 2px dashed #ccc; margin: 30px 0;">
 
-            <h3><i class="fas fa-motorcycle"></i> Entrega</h3>
+            <h3><i class="fas fa-motorcycle"></i> Entrega / Contacto</h3>
+            
+            <label>Tu número de celular:</label>
+            <input type="number" id="phoneInput" placeholder="Ej: 312..." style="margin-bottom: 15px;">
+
+            <label>Tipo de entrega:</label>
             <select id="deliveryType" onchange="handleDeliveryChange()">
                 <option value="pickup">Recoger en el local</option>
                 <option value="delivery">A Domicilio (Desde $5.000)</option>
             </select>
-
+            
             <div id="addressContainer" class="hidden">
                 <div id="gpsSuccessMsg" class="hidden" style="color: var(--accent-green); margin-bottom: 10px; font-weight: bold;">
                     <i class="fas fa-check-circle"></i> Ubicación GPS guardada
@@ -284,8 +289,8 @@
                 $0
                 <span>Total estimado</span>
             </div>
-            <button class="btn-order" onclick="sendToWhatsapp()">
-                Enviar Pedido <i class="fab fa-whatsapp"></i>
+            <button class="btn-order" onclick="window.guardarPedidoEnFirebase()">
+                Realizar Pedido <i class="fas fa-check"></i>
             </button>
         </div>
 
@@ -593,58 +598,7 @@
             document.getElementById('dateContainer').classList.toggle('hidden', isAsap);
         }
 
-        function sendToWhatsapp() {
-            let msg = "Hola *Papi Quiero Pizza Ya*, deseo pedir:\n\n";
-            let hasItems = false;
-
-            // Pizzas
-            document.querySelectorAll('.pizza-block').forEach((block, index) => {
-                const sizeMap = { 'P': 'Pequeña', 'M': 'Mediana', 'G': 'Grande' };
-                const sizeVal = block.querySelector('.pizza-size').value;
-                if(sizeVal) {
-                    const flavors = [];
-                    block.querySelectorAll('.flavor-select').forEach(sel => { if(sel.value) flavors.push(sel.value); });
-                    if(flavors.length > 0) {
-                        msg += `🍕 *Pizza #${index+1}:* ${sizeMap[sizeVal]} (${flavors.join(' / ')})\n`;
-                        hasItems = true;
-                    }
-                }
-            });
-
-            // Otros (Burgers, Dogs, Salchi)
-            document.querySelectorAll('.item-select').forEach(sel => {
-                if(sel.value) {
-                    let typeIcon = '🍔';
-                    if(sel.dataset.type === 'dog') typeIcon = '🌭';
-                    if(sel.dataset.type === 'salchipapa') typeIcon = '🍟';
-                    
-                    msg += `${typeIcon} ${sel.value}\n`;
-                    hasItems = true;
-                }
-            });
-
-            if(!hasItems) { alert("Pedido vacío"); return; }
-
-            const total = document.getElementById('displayTotal').innerText.split('\n')[0];
-            msg += `\n💰 *Total Aprox:* ${total}`;
-            
-            const notes = document.getElementById('extraNotes').value;
-            if(notes) msg += `\n📝 *Nota:* ${notes}`;
-
-            const delivery = document.getElementById('deliveryType').value;
-            if(delivery === 'delivery') {
-                const addr = document.getElementById('addressInput').value;
-                const gps = document.getElementById('gpsCoords').value;
-                msg += `\n🛵 *DOMICILIO* ($${DELIVERY_FEE.toLocaleString()})\n📍 Dirección: ${addr}`;
-                if(gps) msg += `\n🗺 Mapa: ${gps}`;
-            } else { msg += `\n🏪 Recojo en local`; }
-
-            const asap = document.getElementById('asap').checked;
-            msg += asap ? `\n⏰ Lo más rápido posible` : `\n⏰ Hora: ${document.getElementById('dateInput').value}`;
-
-            const url = `https://api.whatsapp.com/send?phone=573123747146&text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
-        }
     </script>
+    <script type="module" src="js/enviar-pedido.js"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pedidos Recibidos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #f4f4f4; font-family: 'Open Sans', sans-serif; margin: 0; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        h1 { color: #ce2c22; margin: 0; }
+        .btn-logout { background: #333; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        
+        /* Grid de pedidos */
+        .pedidos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        
+        .pedido-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-top: 5px solid #ce2c22; animation: fadeIn 0.5s; }
+        .pedido-header { display: flex; justify-content: space-between; font-weight: bold; color: #555; margin-bottom: 10px; }
+        .pedido-body p { margin: 5px 0; font-size: 0.95rem; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-fire"></i> Pedidos en Tiempo Real</h1>
+        <button id="btnLogout" class="btn-logout">Cerrar Sesión</button>
+    </div>
+
+    <div id="listaPedidos" class="pedidos-grid">
+        <p>Cargando pedidos...</p>
+    </div>
+
+    <script type="module" src="../js/pedidos.js"></script>
+</body>
+</html>

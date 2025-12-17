@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Papi Quiero Pizza Ya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #1a1a1a; color: white; font-family: 'Open Sans', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-box { background: #ce2c22; padding: 40px; border-radius: 10px; text-align: center; width: 90%; max-width: 300px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 5px; box-sizing: border-box;}
+        button { background: #1a1a1a; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;}
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Administración</h2>
+        <input type="text" id="email" placeholder="Usuario" value="papiquieropizzaya">
+        <input type="password" id="password" placeholder="Contraseña">
+        <button id="btnLogin">Ingresar</button>
+        <p id="errorMsg" style="color: yellow; display: none;"></p>
+    </div>
+
+    <script type="module">
+        import { auth, signInWithEmailAndPassword } from '../js/firebase.js';
+
+        document.getElementById('btnLogin').addEventListener('click', async () => {
+            const user = document.getElementById('email').value; // El usuario pondrá 'papiquieropizzaya'
+            const pass = document.getElementById('password').value;
+            
+            // Truco: Agregamos el dominio falso automáticamente
+            const emailFull = user.includes('@') ? user : user + '@papiquieropizzaya.com';
+
+            try {
+                await signInWithEmailAndPassword(auth, emailFull, pass);
+                window.location.href = "pedidos.html";
+            } catch (error) {
+                const msg = document.getElementById('errorMsg');
+                msg.style.display = 'block';
+                msg.innerText = "Error: Credenciales incorrectas";
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
