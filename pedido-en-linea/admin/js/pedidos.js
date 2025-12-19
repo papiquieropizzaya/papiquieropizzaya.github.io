@@ -1,13 +1,13 @@
 import { auth, db, onAuthStateChanged, signOut, collection, query, orderBy, onSnapshot } from './firebase.js';
 
 // Verificar autenticación
-onAuthStateChanged(auth, (user) => {
-    if (!user) {
-        window.location.href = "login.html"; // Si no está logueado, fuera
-    } else {
-        cargarPedidos();
-    }
-});
+//onAuthStateChanged(auth, (user) => {
+//    if (!user) {
+//        window.location.href = "login.html"; // Si no está logueado, fuera
+//    } else {
+//        cargarPedidos();
+//    }
+//});
 
 document.getElementById('btnLogout').addEventListener('click', () => {
     signOut(auth);
@@ -64,3 +64,4 @@ function cargarPedidos() {
         });
     });
 }
+
