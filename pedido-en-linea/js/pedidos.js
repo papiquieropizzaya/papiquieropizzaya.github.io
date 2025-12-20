@@ -1,4 +1,17 @@
-// En js/pedidos.js
+import { auth, db, onAuthStateChanged, signOut, collection, query, orderBy, onSnapshot } from './firebase.js';
+
+// Verificar autenticación
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        window.location.href = "login.html"; // Si no está logueado, fuera
+    } else {
+        cargarPedidos();
+    }
+});
+
+document.getElementById('btnLogout').addEventListener('click', () => {
+    signOut(auth);
+});
 
 function cargarPedidos() {
     const contenedor = document.getElementById('listaPedidos');
@@ -14,16 +27,16 @@ function cargarPedidos() {
         }
 
         snapshot.forEach((doc) => {
-            // ... (aquí va todo tu código de renderizado de tarjetas igual que antes) ...
             const data = doc.data();
             const fecha = data.fechaCreacion ? data.fechaCreacion.toDate().toLocaleString() : 'Reciente';
             
-            // Construir HTML de los items (Copia tu lógica original aquí)
+            // Construir HTML de los items
             let itemsHtml = '';
             data.items.forEach(item => {
                 itemsHtml += `<li><strong>${item.tipo.toUpperCase()}:</strong> ${item.detalle} ${item.sabores ? `(${item.sabores})` : ''}</li>`;
             });
 
+            // Mapa Link
             let gpsLink = '';
             if(data.cliente.gps) {
                 gpsLink = `<a href="${data.cliente.gps}" target="_blank" style="color:red"><i class="fas fa-map-marker-alt"></i> Ver Mapa GPS</a>`;
@@ -49,9 +62,5 @@ function cargarPedidos() {
             `;
             contenedor.appendChild(card);
         });
-    }, (error) => {
-        // --- ESTA ES LA PARTE NUEVA IMPORTANTE ---
-        console.error("Error obteniendo documentos: ", error);
-        contenedor.innerHTML = `<p style="color:red; text-align:center">Error: ${error.message}</p>`;
     });
 }
