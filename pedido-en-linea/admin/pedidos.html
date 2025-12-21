@@ -12,12 +12,33 @@
         h1 { color: #ce2c22; margin: 0; }
         .btn-logout { background: #333; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; }
         
+        /* Títulos de sección (Hoy / Anteriores) */
+        .section-title { color: #555; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.2rem; }
+        .no-pedidos { text-align: center; color: #777; font-style: italic; background: #e9e9e9; padding: 20px; border-radius: 8px; }
+
         /* Grid de pedidos */
         .pedidos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
         
         .pedido-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-top: 5px solid #ce2c22; animation: fadeIn 0.5s; }
         .pedido-header { display: flex; justify-content: space-between; font-weight: bold; color: #555; margin-bottom: 10px; }
         .pedido-body p { margin: 5px 0; font-size: 0.95rem; }
+
+        /* Estilos del Select de Estado */
+        .status-select {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 5px;
+        }
+        /* Color Verde para Nuevo */
+        .status-select.nuevo { background-color: #28a745; }
+        /* Color Naranja para Realizado */
+        .status-select.realizado { background-color: #fd7e14; }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -27,9 +48,10 @@
         <button id="btnLogout" class="btn-logout">Cerrar Sesión</button>
     </div>
 
-    <div id="listaPedidos" class="pedidos-grid">
+    <div id="listaPedidos">
         <p>Cargando pedidos...</p>
     </div>
+
     <script type="module" src="../js/firebase.js"></script>
     <script type="module" src="../js/pedidos.js"></script>
 </body>

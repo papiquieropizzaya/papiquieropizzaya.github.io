@@ -1,6 +1,6 @@
 // Importar librerías de Firebase compatibles con CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, updateDoc, doc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 // --- PEGA AQUÍ TU CONFIGURACIÓN DE FIREBASE ---
@@ -19,5 +19,5 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// Exportamos las funciones para usarlas en otros archivos
-export { db, auth, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, signInWithEmailAndPassword, onAuthStateChanged, signOut };
+// Exportamos las funciones (agregué updateDoc y doc)
+export { db, auth, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateDoc, doc };
