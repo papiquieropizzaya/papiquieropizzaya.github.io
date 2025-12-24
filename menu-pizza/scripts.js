@@ -1,37 +1,42 @@
-const navbar = document.getElementById('navbar');
-let lastScrollTop = 0;
+window.addEventListener("load", function() {
+    const loader = document.getElementById("loader");
+    const wrapper = document.getElementById("loader-wrapper");
+    const warning = document.getElementById("connection-warning");
 
-window.addEventListener('scroll', () => {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    // Mostrar advertencia después de 4 segundos si la página sigue cargando
+    const warningTimeout = setTimeout(function() {
+        warning.style.display = "block";
+    }, 4000);
 
-    if (scrollTop > lastScrollTop) {
-        // Scroll hacia abajo, esconder navbar
-        navbar.classList.add('navbar-hidden');
-    } else {
-        // Scroll hacia arriba, mostrar navbar
-        navbar.classList.remove('navbar-hidden');
-    }
+    loader.addEventListener("animationiteration", function() {
+        // Una vez que se complete la vuelta actual, realiza la transición hacia arriba
+        wrapper.style.transform = "translateY(-100%)"; // Mueve el fondo hacia arriba
+        document.getElementById("content").style.display = "block"; // Muestra el contenido
+        
+        // Cancela el mensaje de advertencia si ya cargó
+        clearTimeout(warningTimeout);
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Evita que lastScrollTop sea negativo
-});
-
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
-const navLinks = document.querySelectorAll('.nav-links li');
-
-burger.addEventListener('click', () => {
-    // Toggle Nav
-    nav.classList.toggle('nav-active');
-
-    // Animate Links
-    navLinks.forEach((link, index) => {
-        if (link.style.animation) {
-            link.style.animation = '';
-        } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-        }
+        // Espera 1 segundo para que la transición termine antes de ocultar el wrapper
+        setTimeout(function() {
+            wrapper.style.display = "none";
+        }, 1000);
     });
 
-    // Burger Animation
-    burger.classList.toggle('toggle');
+    // Desactiva la animación infinita cuando la página está completamente cargada
+    loader.style.animationIterationCount = "1";
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 70, // Adjust for sticky header height
+                behavior: 'smooth'
+            });
+        }
+    });
 });

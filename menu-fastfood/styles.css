@@ -6,6 +6,97 @@
 html {
     font-size: 250%;
 }
+:root {
+    --primary-color: #D32F2F; /* Rojo similar al de muchas marcas de pizza */
+    --secondary-color: #4CAF50; /* Verde para frescura */
+    --accent-color: #FFC107; /* Amarillo para acentos y promociones */
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --bg-light: #f8f8f8;
+    --font-primary: 'Arial', sans-serif; /* Jeno's parece usar sans-serif */
+}
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9E0AE;
+    z-index: 9999;
+    transition: transform 1s ease-in-out; /* Transición suave hacia arriba */
+}
+
+#loader img {
+    width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 100px;
+    animation: spin infinite 1s linear;
+}
+
+/* Texto de advertencia de conexión */
+#connection-warning {
+    margin-top: 20px;
+    font-size: 18px;
+    color: red;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Animación de giro infinito */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Header y Navegación */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 25px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--accent-color);
+}
 
 body {
     font-family: "Poppins", sans-serif;
@@ -44,7 +135,7 @@ li {
     list-style-type: none;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     text-align: center;
     color: antiquewhite;
 }
@@ -67,110 +158,7 @@ h1 {
     box-sizing: border-box;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-    position: fixed; /* Cambiado a fixed para que se mantenga visible */
-    top: 0;
-    width: 100%;
-    z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
-    transition: top 0.3s; /* Añade una transición suave para mostrar/ocultar la navbar */
-}
 
-.navbar-hidden {
-    top: -100px; /* Ajusta este valor según la altura de tu navbar */
-}
-
-.logo img {
-    height: 50px; /* Ajusta el tamaño del logo aquí */
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-}
-
-.nav-links li {
-    margin-left: 20px;
-}
-
-.nav-links a {
-    color: rgb(252, 0, 0);
-    text-decoration: none;
-    font-size: 18px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.nav-links a:hover {
-    color: #f4b400;
-}
-
-.burger {
-    display: none;
-    cursor: url('pizza-cursor-3.png'), auto;
-}
-
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px;
-    transition: all 0.3s ease;
-}
-
-@media screen and (max-width: 900px) {
-
-    .nav-links {
-        position: absolute;
-        right: 0;
-        height: 100vh;
-        top: 70px; /* Establece la distancia desde la parte superior de la pantalla */
-        background-color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 235px;
-        width: 50%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-        z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
-    }
-
-    .nav-links li {
-        opacity: 0;
-        margin-bottom: 30px; /* Añade más separación entre los elementos */
-    }
-
-    .burger {
-        display: block;
-    }
-
-    .nav-active {
-        transform: translateX(0);
-    }
-
-    .nav-active li {
-        opacity: 1;
-        transition: opacity 0.5s ease-in-out;
-        transition-delay: 0.3s;
-    }
-
-    .toggle .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .toggle .line2 {
-        opacity: 0;
-    }
-
-    .toggle .line3 {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-
-}
 
 .im-container {
     display: flex;
@@ -189,7 +177,7 @@ h1 {
 }
 
 .btn-pedir {
-    background-color: #25d366; /* Verde tipo WhatsApp/Venta */
+    background-color: #1aa04b; /* Verde tipo WhatsApp/Venta */
     color: white;
     text-decoration: none;
     font-family: "Poppins", sans-serif;
@@ -206,7 +194,7 @@ h1 {
 }
 
 .btn-pedir:hover {
-    background-color: #1ebc57; /* Un poco más oscuro al pasar el mouse */
+    background-color: #21be5b; /* Un poco más oscuro al pasar el mouse */
     transform: scale(1.05); /* Efecto de crecimiento suave */
 }
 
@@ -215,5 +203,8 @@ h1 {
     .btn-pedir {
         font-size: 16px;
         padding: 12px 25px;
+    }
+    .im {
+        width: 80%;
     }
 }

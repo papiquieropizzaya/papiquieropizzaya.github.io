@@ -13,25 +13,19 @@
   
   <body>
 
-  <nav id="navbar" class="navbar">
-    <div class="logo">
-        <a href="index.html"> <img src="https://papiquieropizzaya.com/Icon.png" alt="Logo" class="logo-img">
-        </a>
+    <div id="loader-wrapper">
+        <div id="loader">
+            <img src="https://papiquieropizzaya.com/loader.png" alt="Cargando...">
+        </div>
+        <p id="connection-warning" style="display: none;">Verifica tu conexión a internet...</p>
     </div>
-    
-    <ul class="nav-links">
-        </ul>
 
-    <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-  </nav>
+  <div id="content" style="display: none;">
 
   <div class="header" id="menu-section">  
     <ul>
-      <li><h1 style="margin-top: 120px; margin-bottom: 20px;">Menú de Comidas Rápidas</h1></li>
+      <li><h1 style="margin-top: 45px; margin-bottom: 20px;">Menú de Comidas Rápidas</h1></li>
+      <li><h5><a href="/" style="color: chartreuse; text-decoration: double;">Ir a inicio</a></h5></li>
       
       <li>
       <div class="im-container">
@@ -47,6 +41,7 @@
       <a href="/pedido-en-linea/" class="btn-pedir" target="_blank">
           Haz tu Pedido Aquí 🍕
       </a>
+  </div>
   </div>
 
   <script src="scripts.js"></script>
