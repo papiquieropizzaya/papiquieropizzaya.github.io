@@ -129,3 +129,38 @@ function crearTarjetaHTML(data) {
         </div>
     `;
 }
+
+// Variable para evitar sonido al recargar la página
+let cargaInicial = true; 
+
+const audio = document.getElementById("audioNotificacion");
+
+// Escuchando cambios en tiempo real
+db.collection("pedidos").orderBy("fecha", "desc").onSnapshot((snapshot) => {
+    
+    // Detectamos cambios específicos en vez de recargar todo
+    snapshot.docChanges().forEach((change) => {
+        
+        if (change.type === "added") {
+            // Renderizar el pedido en HTML (Tu función existente)
+            mostrarPedidoEnPantalla(change.doc.data(), change.doc.id); 
+
+            // LOGICA DEL SONIDO:
+            // Solo sonar si NO es la carga inicial
+            if (!cargaInicial) {
+                try {
+                    audio.currentTime = 0; // Reiniciar audio
+                    audio.play();
+                } catch (error) {
+                    console.log("El navegador bloqueó el audio. Haz click en la página una vez.");
+                }
+            }
+        }
+    });
+
+    // Una vez procesados los pedidos viejos, desactivamos la bandera
+    cargaInicial = false; 
+});
+
+// NOTA: Los navegadores modernos bloquean el audio automático. 
+// El admin debe hacer click en cualquier parte de la página al menos una vez para activar el permiso de audio.
