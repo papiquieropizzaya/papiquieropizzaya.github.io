@@ -1,5 +1,10 @@
 import { auth, db, onAuthStateChanged, signOut, collection, query, orderBy, onSnapshot, updateDoc, doc } from './firebase.js';
 
+let cargaInicial = true; 
+const audio = document.getElementById("audioNotificacion");
+
+
+
 // Verificar autenticación
 onAuthStateChanged(auth, (user) => {
     if (!user) {
@@ -131,9 +136,7 @@ function crearTarjetaHTML(data) {
 }
 
 // Variable para evitar sonido al recargar la página
-let cargaInicial = true; 
 
-const audio = document.getElementById("audioNotificacion");
 
 // Escuchando cambios en tiempo real
 db.collection("pedidos").orderBy("fecha", "desc").onSnapshot((snapshot) => {

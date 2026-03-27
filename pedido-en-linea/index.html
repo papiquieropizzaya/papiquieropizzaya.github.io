@@ -193,7 +193,7 @@
 
         <div class="container">
             <div class="header">
-                <a href="/" class="back-link"><i class="fas fa-arrow-left"></i></a>
+                <a href="javascript:history.back()" class="back-link"><i class="fas fa-arrow-left"></i></a>
                 <h1>Haz tu Pedido</h1>
                 <p>Sabor en leña 🔥</p>
             </div>
@@ -312,8 +312,9 @@
                 <h3>Aviso de Horario</h3>
                 <p>Recuerda que los martes y miércoles no laboramos, el horno también necesita descansar un poco.<br>Nos vemos los demás días con pizzas recién hechas.🍕</p>
                 <div class="modal-btn-group" style="flex-direction: column;">
-                    <button class="btn-modal btn-red" onclick="closeScheduleModal()">Sí, voy a pedir</button>
-                    <button class="btn-modal btn-blue" onclick="openVerifyModal()">Verificar si está abierto</button>
+                    <button class="btn-modal btn-red" onclick="if(document.referrer.includes(location.hostname)){history.back()} else {location.href='/'}"></button>>Volver</button>
+                    <!-- <button class="btn-modal btn-red" onclick="closeScheduleModal()">Sí, voy a pedir</button>
+                    <button class="btn-modal btn-blue" onclick="openVerifyModal()">Verificar si está abierto</button>-->
                 </div>
             </div>
         </div>
@@ -334,11 +335,11 @@
                 <button onclick="document.getElementById('verifyModal').style.display='none'" style="margin-top:15px; background:none; border:none; text-decoration:underline; color:#666;">Cerrar</button>
             </div>
         </div>
-        <audio id="audioNotificacion" src="TU_ARCHIVO_DE_SONIDO.mp3" preload="auto"></audio>
+        <audio id="audioNotificacion" src="./sonidos/notificacion.mp3" preload="auto"></audio>
 
 
     <script>
-        // --- BASE DE DATOS DE PRECIOS ACTUALIZADA ---
+        // --- BASE DE DATOS DE PRECIOS ACTUALIZADA --- //
         const PIZZA_PRICES = {
             'Margarita': { P: 26000, M: 32000, G: 40000 },
             'Bocadillo': { P: 26000, M: 34000, G: 40000 },
