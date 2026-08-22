@@ -1,9 +1,6 @@
 import { auth, db, onAuthStateChanged, signOut, collection, query, orderBy, onSnapshot, updateDoc, doc } from './firebase.js';
 
 let cargaInicial = true; 
-const audio = document.getElementById("audioNotificacion");
-
-
 
 // Verificar autenticación
 onAuthStateChanged(auth, (user) => {
@@ -35,9 +32,27 @@ window.cambiarEstado = async (idPedido, nuevoEstado) => {
 function cargarPedidos() {
     const contenedor = document.getElementById('listaPedidos');
     const q = query(collection(db, "pedidos"), orderBy("fechaCreacion", "desc"));
+    const audio = document.getElementById("audioNotificacion");
 
     // Escuchar cambios en tiempo real
     onSnapshot(q, (snapshot) => {
+        
+        // --- LÓGICA DE AUDIO: Solo suena si el pedido fue "added" (nuevo) y no es la carga inicial ---
+        snapshot.docChanges().forEach((change) => {
+            if (change.type === "added" && !cargaInicial) {
+                try {
+                    audio.currentTime = 0; // Reiniciar audio
+                    audio.play();
+                } catch (error) {
+                    console.log("El navegador bloqueó el audio. Haz click en la página una vez.");
+                }
+            }
+        });
+        
+        // Desactivar la bandera de carga inicial una vez que se leyeron los datos por primera vez
+        cargaInicial = false;
+
+        // --- RENDERIZADO ORIGINAL DE LA PANTALLA ---
         contenedor.innerHTML = '';
         
         if(snapshot.empty) {
@@ -134,36 +149,3 @@ function crearTarjetaHTML(data) {
         </div>
     `;
 }
-
-// Variable para evitar sonido al recargar la página
-
-
-// Escuchando cambios en tiempo real
-db.collection("pedidos").orderBy("fecha", "desc").onSnapshot((snapshot) => {
-    
-    // Detectamos cambios específicos en vez de recargar todo
-    snapshot.docChanges().forEach((change) => {
-        
-        if (change.type === "added") {
-            // Renderizar el pedido en HTML (Tu función existente)
-            mostrarPedidoEnPantalla(change.doc.data(), change.doc.id); 
-
-            // LOGICA DEL SONIDO:
-            // Solo sonar si NO es la carga inicial
-            if (!cargaInicial) {
-                try {
-                    audio.currentTime = 0; // Reiniciar audio
-                    audio.play();
-                } catch (error) {
-                    console.log("El navegador bloqueó el audio. Haz click en la página una vez.");
-                }
-            }
-        }
-    });
-
-    // Una vez procesados los pedidos viejos, desactivamos la bandera
-    cargaInicial = false; 
-});
-
-// NOTA: Los navegadores modernos bloquean el audio automático. 
-// El admin debe hacer click en cualquier parte de la página al menos una vez para activar el permiso de audio.
