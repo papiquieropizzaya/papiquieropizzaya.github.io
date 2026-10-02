@@ -339,33 +339,32 @@
 
 
     <script>
-        // --- BASE DE DATOS DE PRECIOS ACTUALIZADA --- //
         const PIZZA_PRICES = {
-            'Margarita': { P: 26000, M: 32000, G: 40000 },
-            'Bocadillo': { P: 26000, M: 34000, G: 40000 },
-            'Jamón': { P: 28000, M: 38000, G: 46000 },
-            'Vegetariana': { P: 28000, M: 38000, G: 46000 },
-            'Hawaiana': { P: 32000, M: 42000, G: 52000 },
-            'Campesina': { P: 32000, M: 42000, G: 52000 },
-            'Peperoni': { P: 32000, M: 42000, G: 52000 },
-            'Mexicana': { P: 32000, M: 42000, G: 52000 },
-            '4 Estaciones': { P: 30000, M: 40000, G: 50000 },
-            'Cerro de la vieja': { P: 30000, M: 40000, G: 50000 },
-            'Mejue': { P: 30000, M: 40000, G: 48000 },
-            'Salami': { P: 30000, M: 40000, G: 48000 },
-            'Children': { P: 30000, M: 40000, G: 50000 },
-            'La casa': { P: 30000, M: 42000, G: 52000 },
-            'Socavon': { P: 30000, M: 40000, G: 50000 },
-            'La colorada': { P: 30000, M: 40000, G: 50000 },
-            'Marinera': { P: 40000, M: 50000, G: 62000 },
+            'Margarita': { P: 28000, M: 34000, G: 42000 },
+            'Bocadillo': { P: 28000, M: 36000, G: 42000 },
+            'Jamón': { P: 30000, M: 40000, G: 48000 },
+            'Vegetariana': { P: 30000, M: 40000, G: 48000 },
+            'Hawaiana': { P: 34000, M: 44000, G: 54000 },
+            'Campesina': { P: 34000, M: 44000, G: 54000 },
+            'Peperoni': { P: 34000, M: 44000, G: 54000 },
+            'Mexicana': { P: 34000, M: 44000, G: 54000 },
+            '4 Estaciones': { P: 32000, M: 42000, G: 52000 },
+            'Cerro de la vieja': { P: 32000, M: 42000, G: 52000 },
+            'Mejue': { P: 32000, M: 42000, G: 52000 },
+            'Salami': { P: 32000, M: 42000, G: 52000 },
+            'Children': { P: 32000, M: 42000, G: 52000 },
+            'La casa': { P: 34000, M: 44000, G: 54000 },
+            'Socavon': { P: 32000, M: 42000, G: 52000 },
+            'La colorada': { P: 32000, M: 42000, G: 52000 },
+            'Marinera': { P: 42000, M: 52000, G: 62000 },
             'Puente rojo': { P: 34000, M: 44000, G: 56000 },
-            'El parche': { P: 32000, M: 42000, G: 52000 },
-            'Ambrosio Alfinger': { P: 30000, M: 40000, G: 50000 },
-            'La Honda': { P: 38000, M: 50000, G: 60000 },
+            'El parche': { P: 34000, M: 42000, G: 52000 },
+            'Ambrosio Alfinger': { P: 32000, M: 42000, G: 52000 },
+            'La Honda': { P: 40000, M: 52000, G: 60000 },
             'Camarones': { P: 34000, M: 46000, G: 56000 },
-            'Cuatro quesos': { P: 34000, M: 46000, G: 56000 },
-            'Vegana': { P: 24000, M: 36000, G: 42000 },
-            'Trío': { P: 32000, M: 46000, G: 56000 },
+            'Cuatro quesos': { P: 36000, M: 48000, G: 58000 },
+            'Vegana': { P: 26000, M: 36000, G: 44000 },
+            'Trío': { P: 34000, M: 46000, G: 56000 },
         };
 
         const OTHER_PRICES = {
@@ -426,9 +425,9 @@
                         <label>¿Cuántos sabores?</label>
                         <select class="num-flavors" onchange="renderFlavorSelects(this)">
                             <option value="1">1 Sabor</option>
-                            <option value="2">2 Sabores (+1.000)</option>
-                            <option value="3">3 Sabores (+2.000)</option>
-                            <option value="4">4 Sabores (+2.000)</option>
+                            <option value="2">2 Sabores (+2.000)</option>
+                            <option value="3">3 Sabores (+3.000)</option>
+                            <option value="4">4 Sabores (+3.000)</option>
                         </select>
                         <div class="flavors-list"></div>
                     </div>
